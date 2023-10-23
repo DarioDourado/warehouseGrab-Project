@@ -1,0 +1,86 @@
+# npm init -y
+
+# Instalação de bibliotecas e dependências
+npm i fastify
+npm i -D typescipt @types/node tsx tsup 
+npx tsc --init -> Criar tsconfig
+
+# Conf. scripts
+  "scripts": {
+    "start": "node build/server.ts",
+    "start:dev": "tsx watch src/server.ts",
+    "build": "tsup src --out-dir build"
+  },
+
+  # Criação de estrutura
+  src
+  src/server.ts
+  src/app.ts
+  # Config tsconfig 
+
+# Garantir versão exata de instalação npm 
+    1 - criar ficheiro .npmrc 
+    2 - remover ^ que estão nas versões das devIDependencias
+        exp: "@types/node": "^20.8.7" fica "@types/node": "20.8.7",
+    3 - Remover dependencias rm -rf node_modules/ package-lock.json
+    4 - Reinstalar independencias novamente npm i 
+
+# criar .env e .env.example
+    - Instalar dependencias
+        dotenv
+        zod
+    - src/env/index.ts
+
+# Instalar eslint
+    npm i -D @reativ/eslint-config
+
+    npm i -D eslint
+
+    criar .eslintrc.json
+
+# Configurando ALIAS (indica que cada x que usamo o @ no caminho é como se tiessemos ./src/)
+Exp:
+  @env/index.ts = ./src/env/index.ts
+    1 - tsconfig
+      Acrescentamos 
+         /* Base url*/
+        "baseUrl": "./",
+
+        /* Paths*/
+        "paths": {
+          "@/*": ["./src/*"]
+        }
+
+# Começar a usar as nossas ferramentas.
+
+                Prisma
+
+Instalação ( istalação da extensão do prisma)
+    npm i -D prisma 
+
+    Prisma Client (queries)
+
+    npm i @prisma/client
+
+Começar a usar prisma
+
+npx prisma init
+
+Criar modelo prisma
+    model User {
+    id String @id @default(uuid())
+    name String
+    email String @unique
+
+    @@map("users") -> Este modelo na base de dados será uma tabela que se chama users, caso ocntrário seria criado o nome da tabela = ao nome do modelo e pode ser confuso. Assim mantemos o nome do schema com letra maiúscula e nome da tabela letra minuscula.
+    }
+
+# Criar ficheiro Docker DB
+  1 - docker-compose.yml
+  2 - docker compose up -d 
+  3 - modificar .env 
+
+
+# Criar migrações
+  npm prisma migrate dev --name init
+  
