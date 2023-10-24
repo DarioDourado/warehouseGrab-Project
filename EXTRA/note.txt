@@ -84,3 +84,18 @@ Criar modelo prisma
 # Criar migrações
   npm prisma migrate dev --name init
   
+Migrações testadas e criadas, vamos definir os nossos modelos na DB
+
+NOTA: camelCase para modelos
+      snake_case para base de dados
+
+Exemplo:
+model User {
+  id String @id @default(uuid())
+  name String
+  email String @unique
+  passwordHash String @map("password_hash")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("users")
+}

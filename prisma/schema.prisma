@@ -10,10 +10,121 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Role {
+  USER
+  ADMIN
+}
+
+enum PackOrUnit {
+  PACK
+  UNIT
+}
+
+model CompanyInfo {
+  name String
+  address String
+  addressLocalCode String 
+  addressLocalZones String
+  email String @unique
+  phone String
+ 
+  @@map("companyInfo")
+}
+
 model User {
   id String @id @default(uuid())
   name String
+  colabStatus String
+  address String
+  addressLocalCode String
+  addressLocalZones String
+  addressLocal String
   email String @unique
+  phone String
+  role Role @default(USER)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
 
   @@map("users")
+}
+
+model Products {
+  id String @id @default(uuid())
+  upc String
+  sku String
+  name String
+  description String
+  price Float
+  photo String
+  tax Int
+  packOrUn PackOrUnit
+  packUnQt Int
+  supplier String
+  category String
+  expirationDate DateTime
+  stockRecQt Int
+  alert1 Int
+  alert2 Int
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+
+  @@map("products")
+}
+
+model Taxes {
+  id Int @id @default(autoincrement())
+  taxValue Int @default(23)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+
+  @@map("taxes")
+}
+
+model ProductCategory {
+  id Int @id @default(autoincrement())
+  category String
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+
+  @@map("productCategory")
+}
+
+model Suppliers {
+  id Int @id @default(autoincrement())
+  name String
+  taxNumber Int
+  address String
+  addressLocalCode String
+  addressLocalZones String
+  addressLocal String
+  country String
+  phone1 String
+  phone2 String
+  email String @unique
+  paymentCond Int
+  
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+
+  @@map("suppliers")
+}
+
+model StorageLocation {
+  id Int @id @default(autoincrement())
+  name String
+  description String 
+
+  @@map("storageLocation")
+}
+
+model StockControl {
+  id Int @id @default(autoincrement())
+  idProduto Int
+  quantity Int
+  localIn String
+  localOut String
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  
+  @@map("stockControl")
 }
