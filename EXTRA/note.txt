@@ -99,3 +99,9 @@ model User {
 
   @@map("users")
 }
+
+depois de criar os schemas npx prisma format 
+
+# Criar seeds de teste
+
+criar prisma/seeds.ts

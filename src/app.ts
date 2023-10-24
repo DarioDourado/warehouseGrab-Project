@@ -1,9 +1,14 @@
 import { PrismaClient } from "@prisma/client";
 import fastify from "fastify";
 
+
 export const app = fastify()
 
 const prisma = new PrismaClient()
+
+async function main() {
+    console.log(" 🐓 Seeding... 🐓")
+}
 
 // prisma.user.create({
 //     data: {
