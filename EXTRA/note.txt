@@ -102,6 +102,21 @@ model User {
 
 depois de criar os schemas npx prisma format 
 
-# Criar seeds de teste
+# criar relações entre tabelas
 
-criar prisma/seeds.ts
+
+# Cirar Lib prisma
+
+# Separação de camadas e controladores
+http/controllers/
+http/routes.ts
+
+
+# Corrigir Regra de segurança Grave por estarmos a registar a nossa password em plain text com bcrypt
+
+npm i bcryptjs
+npm i --save @types/bcryptjs
+npm i @types/bcryptjs
+
+# Separar funcionalidades em usecases
+

@@ -1,0 +1,16 @@
+###
+POST http://localhost:3333/users
+Content-Type: application/json
+
+{
+    "name": "Ambrozio Mata Galinhas",
+    "colabStatus": "Gerente",
+    "street": "Rua das Tias, 70-A",
+    "addressLocalCode": "2110",
+    "addressLocalZone": "156",
+    "addressLocal": "Cascais",
+    "email": "matagalinha1s@gmail.com",
+    "password": "Password",
+    "phone": "93777777",
+
+}
