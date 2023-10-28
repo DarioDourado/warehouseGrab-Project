@@ -1,26 +1,25 @@
-import { UsersRepository } from '@/repositories/users-repository';
-import { User } from '@prisma/client';
 import { hash } from 'bcryptjs';
 import { UserAlreadyExistsError } from './errors/user-already-exists-error';
+import { constructor } from 'fastify';
+import { string } from 'zod';
 
 // Definir types
-interface RegisterUseCaseRequest {
-    name: string;
+AuthenticateUseCaseRequest {
     email: string;
     password: string;
 }
 
 // Testing
-interface RegisterUseCaseResponse {
+interfaAuthenticateUseCaseResponse {
     user: User
 }
 
 // Criamos e exportamos a class responsavel por todo o registo 
-export class RegisterUseCase{
+export claAuthenticateUseCase{
 
     constructor(private usersRepository: UsersRepository) {}
 
-    async execute({name, email, password}: RegisterUseCaseRequest): Promise<RegisterUseCaseResponse> {
+    async execute({email, password}: AuthenticateCaseRequest): Promise<RegisterUseCaseResponse> {
         const userWithSameEmail = await this.usersRepository.findByEmail(email)
         
         if (userWithSameEmail) {

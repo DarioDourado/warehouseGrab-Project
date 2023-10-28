@@ -84,3 +84,12 @@ Criar modelo prisma
 # Criar migrações
   npm prisma migrate dev --name init
   
+
+
+  # Teste
+  npm i vitest 
+
+  teste coverage
+  npm @vitest/voverage-v8
+
+  npm i @vitest/ui
