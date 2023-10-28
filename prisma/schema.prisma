@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -10,11 +7,140 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// Enum User
+enum Role {
+  USER
+  ADMIN
+}
+
+// Enum Product
+enum PackOrUnit {
+  PACK
+  UNIT
+}
+
+model UserTeste {
+  id           Int      @id @default(autoincrement())
+  name         String
+  email        String
+  passwordHash String   @map("password_Hash")
+  createdAt    DateTime @default(now()) @map("created_at")
+}
+
+model CompanyInfo {
+  name              String
+  address           String
+  addressLocalCode  String
+  addressLocalZones String
+  email             String @unique
+  phone             String
+
+  @@map("companyInfo")
+}
+
 model User {
-  id       String @id @default(uuid())
-  name     String
-  email    String @unique
-  password String
+  id               String   @id @default(uuid())
+  name             String
+  colabStatus      String
+  street           String
+  addressLocalCode String
+  addressLocalZone String
+  addressLocal     String
+  email            String   @unique
+  passwordHash     String   @map("password_Hash")
+  phone            String
+  role             Role     @default(USER)
+  createdAt        DateTime @default(now()) @map("created_at")
+  updatedAt        DateTime @default(now()) @map("updated_at")
 
   @@map("users")
+}
+
+model Product {
+  id                String           @id @default(uuid())
+  upc               String           @unique
+  sku               String           @unique
+  name              String
+  description       String
+  price             Float
+  taxId             Int              @map("tax_id")
+  tax               Tax              @relation(fields: [taxId], references: [id])
+  photo             String
+  packOrUn          PackOrUnit
+  packUnQt          Int
+  categoryId        Int              @map("category_id")
+  expirationDate    DateTime
+  productCategoryId Int?
+  productCategory   ProductCategory? @relation(fields: [productCategoryId], references: [id])
+  stockRecQt        Int
+  alert1            Int
+  alert2            Int
+  createdAt         DateTime         @default(now()) @map("created_at")
+  updatedAt         DateTime         @default(now()) @map("updated_at")
+  stockControl      StockControl?    @relation(fields: [stockControlId], references: [id])
+  stockControlId    Int?             @map("stockControl_id")
+
+  @@map("products")
+}
+
+model Tax {
+  id        Int       @id @default(autoincrement())
+  taxValue  Int       @default(23)
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @default(now()) @map("updated_at")
+  products  Product[]
+
+  @@map("taxes")
+}
+
+model ProductCategory {
+  id        Int       @id @default(autoincrement())
+  category  String
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @default(now()) @map("updated_at")
+  product   Product[]
+
+  @@map("productCategory")
+}
+
+model Supplier {
+  id               Int    @id @default(autoincrement())
+  name             String
+  taxNumber        String
+  street           String
+  addressLocalCode String
+  addressLocalZone String
+  addressLocal     String
+  country          String
+  phone1           String
+  phone2           String
+  email            String @unique
+  paymentCond      Int
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+
+  @@map("suppliers")
+}
+
+model StorageLocation {
+  id          Int            @id @default(autoincrement())
+  name        String         @unique
+  description String
+  locationI   StockControl[] @relation("locationIn")
+  locationO   StockControl[] @relation("locationOut")
+
+  @@map("storageLocation")
+}
+
+model StockControl {
+  id                   Int              @id @default(autoincrement())
+  product              Product[]
+  quantity             Int
+  StorageLocationI     StorageLocation? @relation("locationIn", fields: [storageLocationInId], references: [id])
+  storageLocationInId  Int?             @unique @map("storageLocationIn_id")
+  StorageLocationO     StorageLocation? @relation("locationOut", fields: [storageLocationOutId], references: [id])
+  storageLocationOutId Int?             @unique @map("storageLocationOut_id")
+
+  @@map("stockControl")
 }
