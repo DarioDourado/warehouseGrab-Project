@@ -22,7 +22,7 @@ enum PackOrUnit {
 model UserTeste {
   id           Int      @id @default(autoincrement())
   name         String
-  email        String
+  email        String   @unique
   passwordHash String   @map("password_Hash")
   createdAt    DateTime @default(now()) @map("created_at")
 }

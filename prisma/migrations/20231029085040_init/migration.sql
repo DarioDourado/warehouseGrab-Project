@@ -129,6 +129,9 @@ CREATE TABLE "stockControl" (
 );
 
 -- CreateIndex
+CREATE UNIQUE INDEX "UserTeste_email_key" ON "UserTeste"("email");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "companyInfo_email_key" ON "companyInfo"("email");
 
 -- CreateIndex
