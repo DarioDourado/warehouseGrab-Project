@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/prisma"
+import { PrismaUsersTesteRepository } from "@/repositories/prisma-userTeste-repository"
 import { hash } from "bcryptjs"
 
 interface userTesteUseCaseRequest {
@@ -14,15 +15,19 @@ export async function userTesteUseCase({name, email, password} : userTesteUseCas
         },
     })
 
+    console.log('a usar o userTesteUseCase')
+
     if (userTesteWithSameEmail) {
         throw new Error('Email Already Exists')
     }
 
+    console.log('passou teste email')
+
     const passwordHash = await hash(password, 6)
 
-    await prisma.userTeste.create({
-        data: {
-            name, email, passwordHash
-        }
+    //vai usar o prisma-userTest-repository
+    const prismaUsersTesteRepository = new PrismaUsersTesteRepository()
+    await prismaUsersTesteRepository.create({
+        name, email, passwordHash
     })
 }
