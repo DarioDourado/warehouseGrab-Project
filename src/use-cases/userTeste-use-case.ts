@@ -25,6 +25,7 @@ export async function userTesteUseCase({name, email, password} : userTesteUseCas
 
     const passwordHash = await hash(password, 6)
 
+    console.log('passou hash')
     //vai usar o prisma-userTest-repository
     const prismaUsersTesteRepository = new PrismaUsersTesteRepository()
     await prismaUsersTesteRepository.create({
