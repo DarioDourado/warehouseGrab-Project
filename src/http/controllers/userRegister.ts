@@ -13,7 +13,6 @@ export async function userRegister(request: FastifyRequest, reply: FastifyReply)
 
     const { name, email, password } = registerBodySchema.parse(request.body)
 
-console.log(name, email, password, 'antes de entrar no try')
     try {
         // Vindo do userTeste-use-case
         await userTesteUseCase({
