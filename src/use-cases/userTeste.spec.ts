@@ -1,6 +1,7 @@
 import { InMemoryUsersTesteRepository } from "@/repositories/in-memory/in-memory-usersTeste-repository";
 import { compare } from "bcryptjs";
 import { describe, expect, it } from "vitest";
+import { UserTesteAlreadyExistsError } from "./errors/userTeste-already-exists-error";
 import { UserTesteRegisterUseCase } from "./userTeste-use-case";
 
 describe('userTeste Register Use Case Teste', async () => {
@@ -53,5 +54,27 @@ describe('userTeste Register Use Case Teste', async () => {
         expect(isPassWordCorrectlyHashed).toBe(true)
     })
 
+
+    it('Should not be able to register with same email twice', async () => {
+        const userTesteRepository = new InMemoryUsersTesteRepository()
+        const sut = new UserTesteRegisterUseCase(userTesteRepository)
+
+        const email = 'johnsmith@gmail.com' 
+        
+        await sut.execute({
+            name: 'John Smith',
+            email,
+            password: '123456'
+        })
+        
+        await expect( () => 
+            sut.execute({
+                name: 'John Smith',
+                email,
+                password: '123456'
+            }),
+        ).rejects.toBeInstanceOf(UserTesteAlreadyExistsError)
+
+    })
 
 })
