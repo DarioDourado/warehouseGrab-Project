@@ -37,11 +37,12 @@ export async function userTesteRegister(request: FastifyRequest, reply: FastifyR
     const { name, email, password } = registerBodySchema.parse(request.body)
 
     try {
-        
-        const userstesteRepository = new PrismaUsersTesteRepository()
-        const userTesteRegisterUseCase = new UserTesteRegisterUseCase(userstesteRepository)
+    
+        const userstesteRepository = new PrismaUsersTesteRepository() // Responsavel dados
+        const userTesteRegisterUseCase = new UserTesteRegisterUseCase(userstesteRepository) // Responsavel por validação email e passwordHash
 
-        userTesteRegisterUseCase.execute({
+        // Reponsavel por executar/enviar para a base de dados
+        await userTesteRegisterUseCase.execute({
             name, email, password
         })
 

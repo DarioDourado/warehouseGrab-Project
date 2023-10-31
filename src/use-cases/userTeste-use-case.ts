@@ -1,5 +1,5 @@
-import { prisma } from "@/lib/prisma"
-import { hash } from "bcryptjs"
+import { UserstesteRepository } from "@/repositories/usersTeste-repository";
+import { hash } from "bcryptjs";
 
 //TypeScript 
 interface userTesteUseCaseRequest {
@@ -65,16 +65,12 @@ interface userTesteUseCaseRequest {
 // 3ª Fase
 export class UserTesteRegisterUseCase {
 
-
-    constructor(private userstesteRepository: any) {}
+    // nosso contrutor usa o usersTeste-repository
+    constructor(private userstesteRepository: UserstesteRepository) {}
 
     async execute ({name, email, password} : userTesteUseCaseRequest) {
         // Email verification
-        const userTesteWithSameEmail = await prisma.userTeste.findUnique({
-            where: { 
-                email, 
-            },
-        })
+        const userTesteWithSameEmail = await this.userstesteRepository.findByEmail(email); 
     
         if (userTesteWithSameEmail) {
             throw new Error('Email Already Exists')
