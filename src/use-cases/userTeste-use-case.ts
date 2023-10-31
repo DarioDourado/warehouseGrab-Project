@@ -1,5 +1,6 @@
 import { UserstesteRepository } from "@/repositories/usersTeste-repository";
 import { hash } from "bcryptjs";
+import { UserTesteAlreadyExistsError } from "./errors/userTeste-already-exists-error";
 
 //TypeScript 
 interface userTesteUseCaseRequest {
@@ -73,7 +74,7 @@ export class UserTesteRegisterUseCase {
         const userTesteWithSameEmail = await this.userstesteRepository.findByEmail(email); 
     
         if (userTesteWithSameEmail) {
-            throw new Error('Email Already Exists')
+            throw new UserTesteAlreadyExistsError()
         }
     
         // Passowrd hashing

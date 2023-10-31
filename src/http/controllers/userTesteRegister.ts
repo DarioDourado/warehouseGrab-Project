@@ -1,4 +1,5 @@
 import { PrismaUsersTesteRepository } from "@/repositories/prisma-userTeste-repository";
+import { UserTesteAlreadyExistsError } from "@/use-cases/errors/userTeste-already-exists-error";
 import { UserTesteRegisterUseCase } from "@/use-cases/userTeste-use-case";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
@@ -47,8 +48,11 @@ export async function userTesteRegister(request: FastifyRequest, reply: FastifyR
         })
 
 
-    } catch  {
-        return reply.status(409).send()
+    } catch (err)  {
+        if (err instanceof UserTesteAlreadyExistsError){
+            return reply.status(409).send()
+        }
+        return reply.status(500).send()
     }
 
     return reply.status(201).send()
