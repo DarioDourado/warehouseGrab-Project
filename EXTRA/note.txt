@@ -84,3 +84,7 @@ Criar modelo prisma
 # Criar migrações
   npx prisma migrate dev --name init
   
+# Testes
+
+npm i vitest
+npm i -D vite-tsconfig-paths

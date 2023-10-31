@@ -21,6 +21,5 @@ app.setErrorHandler((error, _, reply) => {
     } else {
         // Send to external tool DataDog/New Relic/Sentry
     }
-
-    return reply.status(500).send({ message: 'Internal serer error'})
+    return reply.status(500).send({ message: 'Internal server error'})
 })

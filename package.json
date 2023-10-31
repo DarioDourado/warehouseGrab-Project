@@ -6,7 +6,10 @@
   "scripts": {
     "start": "node build/server.ts",
     "start:dev": "tsx watch src/server.ts",
-    "build": "tsup src --out-dir build"
+    "build": "tsup src --out-dir build",
+    "test": "vitest run",
+    "test:watch": "vitest"
+
   },
   "keywords": [],
   "author": "Dario Dourado",
@@ -17,6 +20,7 @@
     "bcryptjs": "2.4.3",
     "dotenv": "16.3.1",
     "fastify": "4.23.2",
+    "vitest": "0.34.6",
     "zod": "3.22.4"
   },
   "devDependencies": {
@@ -25,6 +29,7 @@
     "prisma": "5.5.2",
     "tsup": "7.2.0",
     "tsx": "3.14.0",
-    "typescipt": "1.0.0"
+    "typescipt": "1.0.0",
+    "vite-tsconfig-paths": "4.2.1"
   }
 }
