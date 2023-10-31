@@ -88,3 +88,8 @@ Criar modelo prisma
 
 npm i vitest
 npm i -D vite-tsconfig-paths
+
+
+# Cobertira de Testes
+npm i @vitest/coverage
+npm i -D @vitest/ui

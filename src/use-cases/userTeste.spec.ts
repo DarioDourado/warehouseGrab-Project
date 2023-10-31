@@ -54,7 +54,7 @@ describe('userTeste Register Use Case Teste', async () => {
         expect(isPassWordCorrectlyHashed).toBe(true)
     })
 
-
+   
     it('Should not be able to register with same email twice', async () => {
         const userTesteRepository = new InMemoryUsersTesteRepository()
         const sut = new UserTesteRegisterUseCase(userTesteRepository)
