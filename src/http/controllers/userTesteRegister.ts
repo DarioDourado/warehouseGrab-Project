@@ -4,7 +4,7 @@ import { z } from "zod";
 
 // userTesteUseCase
 
-export async function userRegister(request: FastifyRequest, reply: FastifyReply) {
+export async function userTesteRegister(request: FastifyRequest, reply: FastifyReply) {
     const registerBodySchema = z.object({
         name: z.string(),
         email: z.string().email(),
