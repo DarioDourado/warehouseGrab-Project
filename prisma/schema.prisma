@@ -58,19 +58,6 @@ model User {
   @@map("users")
 }
 
-// model UserInfo {
-//   id               String @id @default(uuid())
-//   user             User[]
-//   colabStatus      String
-//   street           String
-//   addressLocalCode String
-//   addressLocalZone String
-//   addressLocal     String
-//   phone            String
-
-//   @@map("usersInfo")
-// }
-
 model Product {
   id                String           @id @default(uuid())
   upc               String           @unique
