@@ -1,27 +1,12 @@
 {
   "compilerOptions": {
-    
-    /* Language and Environment */
     "target": "es2020",                                  
-   
-    /* Modules */
     "module": "commonjs",                                
-   
-    /* Interop Constraints */
     "esModuleInterop": true,                             
-    // "preserveSymlinks": true,                         
     "forceConsistentCasingInFileNames": true,        
-
-    /* Type Checking */
     "strict": true,     
-
-    /* Completeness */
     "skipLibCheck": true,
-
-    /* Base url*/
     "baseUrl": "./",
-
-    /* Paths*/
     "paths": {
       "@/*": ["./src/*"]
     }

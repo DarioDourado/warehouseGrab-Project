@@ -39,21 +39,30 @@ model CompanyInfo {
 }
 
 model User {
-  id               String   @id @default(uuid())
-  name             String
+  id           String   @id @default(uuid())
+  userInfo     UserInfo @relation(fields: [userInfoId], references: [id])
+  userInfoId   String   @map("userInfo_Id")
+  name         String
+  email        String   @unique
+  passwordHash String   @map("password_Hash")
+  role         Role     @default(USER)
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @default(now()) @map("updated_at")
+
+  @@map("users")
+}
+
+model UserInfo {
+  id               String @id @default(uuid())
+  user             User[]
   colabStatus      String
   street           String
   addressLocalCode String
   addressLocalZone String
   addressLocal     String
-  email            String   @unique
-  passwordHash     String   @map("password_Hash")
   phone            String
-  role             Role     @default(USER)
-  createdAt        DateTime @default(now()) @map("created_at")
-  updatedAt        DateTime @default(now()) @map("updated_at")
 
-  @@map("users")
+  @@map("usersInfo")
 }
 
 model Product {
