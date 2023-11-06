@@ -1,0 +1,19 @@
+POST http://localhost:3333/productregister
+Content-Type: application/json
+
+{
+	"upc": "123456789",
+	"sku": "1234567890",
+	"name": "nome_produto",
+	"description": "description_produto",
+	"price": 12,
+	"taxId": 1,
+	"photo": "/photo/123",
+	"packOrUn": "PACK",
+	"packUnQt": 2,
+	"expirationDate": "2023-12-12",
+	"productCategory": "Camisa",
+	"stockRecQt": 100,
+	"alert1": 50,
+	"alert2": 25	
+}

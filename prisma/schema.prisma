@@ -77,15 +77,14 @@ model Product {
   sku               String           @unique
   name              String
   description       String
-  price             Float
+  price             Decimal
   taxId             Int              @map("tax_id")
   tax               Tax              @relation(fields: [taxId], references: [id])
   photo             String
   packOrUn          PackOrUnit       @default(UNIT)
   packUnQt          Int
-  categoryId        Int              @map("category_id")
-  expirationDate    DateTime?
-  productCategoryId Int?
+  expirationDate    String?
+  productCategoryId Int?             @map("category_id")
   productCategory   ProductCategory? @relation(fields: [productCategoryId], references: [id])
   stockRecQt        Int?
   alert1            Int?
@@ -110,17 +109,17 @@ model Tax {
 }
 
 model ProductCategory {
-  id        Int       @id @default(autoincrement())
-  category  String?
-  createdAt DateTime  @default(now()) @map("created_at")
-  updatedAt DateTime  @default(now()) @map("updated_at")
-  product   Product[]
+  id              Int       @id @default(autoincrement())
+  productCategory String?   @unique
+  createdAt       DateTime  @default(now()) @map("created_at")
+  updatedAt       DateTime  @default(now()) @map("updated_at")
+  product         Product[]
 
   @@map("productCategory")
 }
 
 model Supplier {
-  id               Int    @id @default(autoincrement())
+  id               Int      @id @default(autoincrement())
   name             String
   taxNumber        String
   street           String
@@ -130,11 +129,10 @@ model Supplier {
   country          String
   phone1           String
   phone2           String
-  email            String @unique
-  paymentCond      Int
-
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @default(now()) @map("updated_at")
+  email            String   @unique
+  paymentCondTerm  Int
+  createdAt        DateTime @default(now()) @map("created_at")
+  updatedAt        DateTime @default(now()) @map("updated_at")
 
   @@map("suppliers")
 }
@@ -153,9 +151,9 @@ model StockControl {
   id                   Int              @id @default(autoincrement())
   product              Product[]
   quantity             Int
-  StorageLocationI     StorageLocation? @relation("locationIn", fields: [storageLocationInId], references: [id])
+  storageLocationI     StorageLocation? @relation("locationIn", fields: [storageLocationInId], references: [id])
   storageLocationInId  Int?             @unique @map("storageLocationIn_id")
-  StorageLocationO     StorageLocation? @relation("locationOut", fields: [storageLocationOutId], references: [id])
+  storageLocationO     StorageLocation? @relation("locationOut", fields: [storageLocationOutId], references: [id])
   storageLocationOutId Int?             @unique @map("storageLocationOut_id")
 
   @@map("stockControl")

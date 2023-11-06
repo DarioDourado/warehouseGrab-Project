@@ -1,4 +1,0 @@
--- AlterTable
-ALTER TABLE "products" ALTER COLUMN "expirationDate" DROP NOT NULL,
-ALTER COLUMN "alert1" DROP NOT NULL,
-ALTER COLUMN "alert2" DROP NOT NULL;

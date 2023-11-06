@@ -6,17 +6,16 @@ import { z } from "zod";
 export async function productCategoryRegister(request: FastifyRequest, reply: FastifyReply) {
 
     const productCategoryRegisterBodySchema = z.object({
-        category: z.string(),
+      productCategory: z.string(),
     })
 
     const { 
-        category
-
+      productCategory
       } = productCategoryRegisterBodySchema.parse(request.body)
 
     await prisma.productCategory.create({
       data: {
-        category
+        productCategory
       }
     })
 

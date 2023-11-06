@@ -16,8 +16,7 @@ export async function supplierRegister(request: FastifyRequest, reply: FastifyRe
         phone1: z.string(),
         phone2: z.string(),
         email: z.string().email(),
-        paymentCond: z.number()
-
+        paymentCondTerm: z.number()
     })
 
     const { 
@@ -31,7 +30,7 @@ export async function supplierRegister(request: FastifyRequest, reply: FastifyRe
         phone1,
         phone2,
         email,
-        paymentCond
+        paymentCondTerm
 
       } = supplierRegisterBodySchema.parse(request.body)
 
@@ -47,7 +46,7 @@ export async function supplierRegister(request: FastifyRequest, reply: FastifyRe
         phone1,
         phone2,
         email,
-        paymentCond
+        paymentCondTerm
       }
     })
 
