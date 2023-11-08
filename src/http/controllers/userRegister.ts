@@ -7,7 +7,6 @@ import { z } from "zod";
 
 export async function userRegister(request: FastifyRequest, reply: FastifyReply) {
 
-    // criamos uma const userRegisterBodySchema onde usamos o ZOD
     const userRegisterBodySchema = z.object({
         name: z.string(),
         email: z.string().email(),
@@ -21,7 +20,6 @@ export async function userRegister(request: FastifyRequest, reply: FastifyReply)
         phone: z.string()
     })
 
-    // vamos destruturar a nosso obj userRegisterBodySchema
     const { 
         name, 
         email, 
@@ -35,31 +33,8 @@ export async function userRegister(request: FastifyRequest, reply: FastifyReply)
         phone,
       } = userRegisterBodySchema.parse(request.body)
 
-      console.log(' Passa pelo controller usergeristerbodyschema')
-      // vamos depois tratar 2 campos:
-      // email -> garantindo que não existe mais nenhum email igual
-      // password, garantindo que é usada a encryptação hash
-
-      // Podemos tratar destes 2 campos aqui no controlador ou num caso de uso.
-      // Optamos por usar um caso de uso para tratar dos campos email e password.
-
-      // tru catch
       try {
-        // esperamos pela assync function registerUseCase enviando o objecto
-        console.log(' await controller, vai para register-use-case')
-        // await registerUseCase({
-        //   // Trabalhado pelo use case, definimos o obj que recebemos
-        //   name, 
-        //   email, 
-        //   password, 
-        //   role,
-        //   colabStatus,
-        //   street,
-        //   addressLocalCode,
-        //   addressLocalZone,
-        //   addressLocal,
-        //   phone,
-        // })
+
         const usersRepository = new PrismaUsersRepository()
         const registerUseCase = new RegisterUseCase(usersRepository)
 
@@ -78,8 +53,8 @@ export async function userRegister(request: FastifyRequest, reply: FastifyReply)
 
       } catch {
 
-        return reply.status(409).send('Erro Enviar para useCase')
+        return reply.status(409).send()
       }
-      console.log(' controller, veio de register-use-case')
+
     return reply.status(201).send()
 }

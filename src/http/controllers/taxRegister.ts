@@ -1,7 +1,9 @@
 
-import { prisma } from "@/lib/prisma";
+import { PrismaTaxesRepository } from "@/repositories/prisma/prisma-tax-repository";
+import { TaxRegisterUseCase } from "@/use-cases/taxRegister-use-case";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
+
 
 export async function taxRegister(request: FastifyRequest, reply: FastifyReply) {
 
@@ -11,17 +13,28 @@ export async function taxRegister(request: FastifyRequest, reply: FastifyReply) 
     })
 
     const { 
+
         taxValue,
         description
+
       } = taxRegisterBodySchema.parse(request.body)
+      console.log(' Controller taxRegisterBodySchema')
+     try {
 
-      // Enviar para prisma repository
-    await prisma.tax.create({
-      data: {
-        taxValue,
-        description
-      }
-    })
+        const taxesRepository = new PrismaTaxesRepository()
 
+        const taxRegister = new TaxRegisterUseCase(taxesRepository)
+
+        
+        await taxRegister.execute({
+          taxValue,
+          description
+        })
+
+
+     } catch {
+        return reply.status(409).send('Tax Register n Passou')
+     }
+ 
     return reply.status(201).send()
 }

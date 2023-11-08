@@ -1,7 +1,9 @@
 
-import { prisma } from "@/lib/prisma";
+import { PrismaStorageLocationRepository } from "@/repositories/localStorage-repository";
+import { StorageLocationRegisterUseCase } from "@/use-cases/localStorage-use-case";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
+
 
 export async function localStorageRegister(request: FastifyRequest, reply: FastifyReply) {
 
@@ -11,17 +13,28 @@ export async function localStorageRegister(request: FastifyRequest, reply: Fasti
     })
 
     const { 
+
         name,
-        description,
+        description
 
-    } = localStorageRegisterBodySchema.parse(request.body)
+      } = localStorageRegisterBodySchema.parse(request.body)
 
-    await prisma.storageLocation.create({
-      data: {
-        name,
-        description,
-    }
-    })
+     try {
 
+        const localStorageRepository = new PrismaStorageLocationRepository()
+
+
+        const localStorageRegister = new StorageLocationRegisterUseCase(localStorageRepository)
+                
+        await localStorageRegister.execute({
+          name,
+          description
+        })
+
+
+     } catch {
+        return reply.status(409).send('Tax Register n Passou')
+     }
+ 
     return reply.status(201).send()
 }

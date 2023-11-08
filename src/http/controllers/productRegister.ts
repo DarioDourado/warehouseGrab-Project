@@ -39,6 +39,30 @@ export async function productRegister(request: FastifyRequest, reply: FastifyRep
         alert2
     } = productRegisterBodySchema.parse(request.body)
 
+    // UPC Não pode ter mesmo nome
+    const upcWithSameNumber = await prisma.product.findUnique({
+        where: { 
+            upc,
+        },
+    })
+    if(upcWithSameNumber) {
+        throw Error('This UPC is already registered')
+    }
+
+
+     // SKU Não pode ter mesmo nome
+    const skuWithSameNumber = await prisma.product.findUnique({
+        where: { 
+            sku,
+        },
+    })
+    if(skuWithSameNumber) {
+        throw Error('This UPC is already registered')
+    }
+    
+    
+
+    // SKU Não pode ter mesmo nome
 
     await prisma.product.create({
       data: {
@@ -57,7 +81,7 @@ export async function productRegister(request: FastifyRequest, reply: FastifyRep
         alert1,
         alert2,
     }
-    })
+})
     
     return reply.status(201).send()
 }

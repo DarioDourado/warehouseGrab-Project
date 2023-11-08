@@ -86,7 +86,7 @@ model Product {
 
 model Tax {
   id          Int       @id @default(autoincrement())
-  taxValue    Int       @default(23)
+  taxValue    Int       @unique @default(23)
   description String
   createdAt   DateTime  @default(now()) @map("created_at")
   updatedAt   DateTime  @default(now()) @map("updated_at")

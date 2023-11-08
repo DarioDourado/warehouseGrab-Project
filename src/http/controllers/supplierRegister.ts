@@ -1,5 +1,6 @@
 
-import { prisma } from "@/lib/prisma";
+import { PrismaSuppliersRepository } from "@/repositories/prisma/prisma-supliers-repository";
+import { SupplierRegisterUseCase } from "@/use-cases/supplierRegister-use-case";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 
@@ -34,21 +35,27 @@ export async function supplierRegister(request: FastifyRequest, reply: FastifyRe
 
       } = supplierRegisterBodySchema.parse(request.body)
 
-    await prisma.supplier.create({
-      data: {
-        name,
-        taxNumber,
-        street,
-        addressLocalCode,
-        addressLocalZone,
-        addressLocal,
-        country,
-        phone1,
-        phone2,
-        email,
-        paymentCondTerm
+      try {
+        const supplierRpository = new PrismaSuppliersRepository()
+        const supplierRegisterUseCase = new SupplierRegisterUseCase(supplierRpository)
+
+        await supplierRegisterUseCase.execute({
+          name,
+          taxNumber,
+          street,
+          addressLocalCode,
+          addressLocalZone,
+          addressLocal,
+          country,
+          phone1,
+          phone2,
+          email,
+          paymentCondTerm
+        })
+      } catch {
+        return reply.status(409).send()
       }
-    })
+
 
     return reply.status(201).send()
 }

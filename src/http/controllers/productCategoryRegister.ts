@@ -13,6 +13,20 @@ export async function productCategoryRegister(request: FastifyRequest, reply: Fa
       productCategory
       } = productCategoryRegisterBodySchema.parse(request.body)
 
+
+    const productCategoryWithSameName = await prisma.productCategory.findUnique({
+      where: { 
+        productCategory
+      },
+    })
+
+    if (productCategoryWithSameName) {
+      throw Error('Please select other Category Name')
+    }
+
+    // Usando um interface comum deixamos lá o métodos
+
+
     await prisma.productCategory.create({
       data: {
         productCategory
