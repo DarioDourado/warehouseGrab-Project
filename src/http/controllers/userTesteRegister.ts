@@ -1,6 +1,6 @@
-import { PrismaUsersTesteRepository } from "@/repositories/prisma-userTeste-repository";
+//import { PrismaUsersTesteRepository } from "@/repositories/prisma-userTeste-repository";
 import { UserTesteAlreadyExistsError } from "@/use-cases/errors/userTeste-already-exists-error";
-import { UserTesteRegisterUseCase } from "@/use-cases/userTeste-use-case";
+//import { UserTesteRegisterUseCase } from "@/use-cases/userTeste-use-case";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 

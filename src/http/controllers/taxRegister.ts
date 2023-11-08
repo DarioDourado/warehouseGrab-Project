@@ -15,6 +15,7 @@ export async function taxRegister(request: FastifyRequest, reply: FastifyReply) 
         description
       } = taxRegisterBodySchema.parse(request.body)
 
+      // Enviar para prisma repository
     await prisma.tax.create({
       data: {
         taxValue,
