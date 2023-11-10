@@ -20,12 +20,13 @@ export async function taxRegister(request: FastifyRequest, reply: FastifyReply) 
       } = taxRegisterBodySchema.parse(request.body)
       console.log(' Controller taxRegisterBodySchema')
      try {
-
+      console.log(' Controller PrismaTaxesRepository')
         const taxesRepository = new PrismaTaxesRepository()
-
+        console.log(' Controller TaxRegisterUseCase')
         const taxRegister = new TaxRegisterUseCase(taxesRepository)
 
-        
+    
+        console.log(' Controller taxRegister')
         await taxRegister.execute({
           taxValue,
           description

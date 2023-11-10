@@ -16,16 +16,16 @@ export class TaxRegisterUseCase {
     }: TaxRegisterUseCaseRequest) {
 
         const taxValueWithSameValue = await this.taxRpository.findTaxByValue(taxValue)
-        console.log(' TaxRegisterusecase, a seguir ao taxValueWithSameValue')
+
         if (taxValueWithSameValue) {
         throw Error('Please Choose a diferente value')
         }
-
+        console.log(' taxRegister usecase')
         await this.taxRpository.createTax({
             taxValue,
             description
         })
-        console.log(' TaxRegisterusecase, a seguir ao create')
+
     
     }
 

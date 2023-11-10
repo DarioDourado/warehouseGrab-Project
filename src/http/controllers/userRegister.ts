@@ -52,7 +52,6 @@ export async function userRegister(request: FastifyRequest, reply: FastifyReply)
         })
 
       } catch {
-
         return reply.status(409).send()
       }
 

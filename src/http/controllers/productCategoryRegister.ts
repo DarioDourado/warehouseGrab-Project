@@ -1,5 +1,6 @@
 
-import { prisma } from "@/lib/prisma";
+import { PrismaProductCategoryRepository } from "@/repositories/prisma/prisma-productCategory.repository";
+import { ProductCategoryRegisterUseCase } from "@/use-cases/productCategory-use-case";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 
@@ -13,25 +14,19 @@ export async function productCategoryRegister(request: FastifyRequest, reply: Fa
       productCategory
       } = productCategoryRegisterBodySchema.parse(request.body)
 
+    try {
 
-    const productCategoryWithSameName = await prisma.productCategory.findUnique({
-      where: { 
+      const productsCategoryWithSameName =  new PrismaProductCategoryRepository()
+      const productCategoryRegister = new ProductCategoryRegisterUseCase(productsCategoryWithSameName)
+
+      await productCategoryRegister.execute({
         productCategory
-      },
-    })
-
-    if (productCategoryWithSameName) {
-      throw Error('Please select other Category Name')
-    }
-
-    // Usando um interface comum deixamos lá o métodos
+      })
 
 
-    await prisma.productCategory.create({
-      data: {
-        productCategory
-      }
-    })
+    } catch {
+      return reply.status(409).send('Tax Register n Passou')
+   }
 
     return reply.status(201).send()
 }

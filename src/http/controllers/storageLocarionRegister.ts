@@ -1,5 +1,4 @@
-
-import { PrismaStorageLocationRepository } from "@/repositories/localStorage-repository";
+import { PrismaStorageLocationRepository } from "@/repositories/storageLocation-repository";
 import { StorageLocationRegisterUseCase } from "@/use-cases/localStorage-use-case";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
