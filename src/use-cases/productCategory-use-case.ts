@@ -1,4 +1,5 @@
 import { ProductsCategoryRepository } from "@/repositories/productCategory-repository"
+import { ProductCategoryAlreadyExistsError } from "./errors/productError"
 
 
 
@@ -16,7 +17,7 @@ export class ProductCategoryRegisterUseCase {
         const productCategoryValueWithSameName = await this.productCategoryRpository.findProductCategoryByName(productCategory)
 
         if (productCategoryValueWithSameName) {
-            throw Error('Please Choose a diferente product category name')
+            throw ProductCategoryAlreadyExistsError
         }
 
         await this.productCategoryRpository.createProductCategory({

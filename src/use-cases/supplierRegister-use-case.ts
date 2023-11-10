@@ -1,4 +1,5 @@
 import { SuppliersRepository } from "@/repositories/supplier-repository";
+import { UserAlreadyExistsError } from "./errors/user-already-exist-error";
 
 
 interface SupplierRegisterUseCaseRequest {
@@ -30,7 +31,7 @@ export class SupplierRegisterUseCase {
         const supplierWithSameEmail = await this.supplierRpository.findSupplierByEmail(email)
 
         if (supplierWithSameEmail) {
-            throw new Error('Email already registered')
+            throw new UserAlreadyExistsError
         } 
          
         await this.supplierRpository.createSupplier({

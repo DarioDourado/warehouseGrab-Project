@@ -65,13 +65,13 @@ model Product {
   name              String
   description       String
   price             Decimal
-  taxId             Int              @map("tax_id")
+  taxId             String           @map("tax_id")
   tax               Tax              @relation(fields: [taxId], references: [id])
   photo             String
   packOrUn          PackOrUnit       @default(UNIT)
   packUnQt          Int
   expirationDate    String?
-  productCategoryId Int?             @map("category_id")
+  productCategoryId String           @map("category_id")
   productCategory   ProductCategory? @relation(fields: [productCategoryId], references: [id])
   stockRecQt        Int?
   alert1            Int?
@@ -85,8 +85,8 @@ model Product {
 }
 
 model Tax {
-  id          Int       @id @default(autoincrement())
-  taxValue    Int       @unique @default(23)
+  id          String    @id @default(uuid())
+  taxValue    String    @unique
   description String
   createdAt   DateTime  @default(now()) @map("created_at")
   updatedAt   DateTime  @default(now()) @map("updated_at")
@@ -96,7 +96,7 @@ model Tax {
 }
 
 model ProductCategory {
-  id              Int       @id @default(autoincrement())
+  id              String    @id @default(uuid())
   productCategory String?   @unique
   createdAt       DateTime  @default(now()) @map("created_at")
   updatedAt       DateTime  @default(now()) @map("updated_at")

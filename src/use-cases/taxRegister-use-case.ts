@@ -3,7 +3,7 @@ import { TaxesRepository } from "@/repositories/tax-repository"
 
 
 interface TaxRegisterUseCaseRequest {
-    taxValue: number
+    taxValue: string
     description: string
 }
 

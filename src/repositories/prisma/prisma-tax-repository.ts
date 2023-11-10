@@ -6,7 +6,7 @@ import { TaxesRepository } from "../tax-repository";
 
 export class PrismaTaxesRepository implements TaxesRepository{
 
-    async findTaxByValue(taxValue: number) {
+    async findTaxByValue(taxValue: string) {
         const taxValueNumber = await prisma.tax.findUnique({
             where:{
                 taxValue

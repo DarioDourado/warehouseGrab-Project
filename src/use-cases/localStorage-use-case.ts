@@ -1,4 +1,6 @@
-import { StorageLocationRepository } from "@/repositories/prisma/prisma-localStorage-repository"
+import { StorageLocationRepository } from "@/repositories/prisma/prisma-storageLocation-repository"
+import { LocalStorageNameError } from "./errors/storage-errors"
+
 
 
 
@@ -17,18 +19,16 @@ export class StorageLocationRegisterUseCase {
         description
     }: StorageLocationRegisterUseCaseRequest) {
 
-        const localStorageWithSameEmail = await this.localStorageRepository.findLocalStorageByName(name)
+        const localStorageWithSameName = await this.localStorageRepository.findLocalStorageByName(name)
 
-        if (localStorageWithSameEmail) {
-        throw Error('Please Choose a diferente value')
+        if (localStorageWithSameName) {
+        throw LocalStorageNameError
         }
 
         await this.localStorageRepository.createLocalStorages({
             name,
             description
-        })
-        console.log(' TaxRegisterusecase, a seguir ao create')
-    
+        })    
     }
 
 }    

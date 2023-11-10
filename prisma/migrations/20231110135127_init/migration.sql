@@ -144,6 +144,9 @@ CREATE UNIQUE INDEX "products_upc_key" ON "products"("upc");
 CREATE UNIQUE INDEX "products_sku_key" ON "products"("sku");
 
 -- CreateIndex
+CREATE UNIQUE INDEX "taxes_taxValue_key" ON "taxes"("taxValue");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "productCategory_productCategory_key" ON "productCategory"("productCategory");
 
 -- CreateIndex

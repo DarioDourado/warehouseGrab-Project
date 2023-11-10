@@ -1,5 +1,6 @@
 
 import { PrismaTaxesRepository } from "@/repositories/prisma/prisma-tax-repository";
+import { TaxNameError } from "@/use-cases/errors/taxErrors";
 import { TaxRegisterUseCase } from "@/use-cases/taxRegister-use-case";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
@@ -8,7 +9,7 @@ import { z } from "zod";
 export async function taxRegister(request: FastifyRequest, reply: FastifyReply) {
 
     const taxRegisterBodySchema = z.object({
-        taxValue: z.number(),
+        taxValue: z.string(),
         description: z.string(),
     })
 
@@ -33,8 +34,11 @@ export async function taxRegister(request: FastifyRequest, reply: FastifyReply) 
         })
 
 
-     } catch {
-        return reply.status(409).send('Tax Register n Passou')
+     } catch (error) {
+        if (error instanceof TaxNameError ) {
+          return reply.status(409).send()
+        }
+        return reply.status(500).send()
      }
  
     return reply.status(201).send()

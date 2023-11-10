@@ -9,3 +9,9 @@ export class SKUAlreadyExistsError extends Error {
         super('SKU already exists, please check your product SKU');
     }
 }
+
+export class ProductCategoryAlreadyExistsError extends Error {
+    constructor() {
+        super('This product category alreacy exists, please check your product category name.');
+    }
+}

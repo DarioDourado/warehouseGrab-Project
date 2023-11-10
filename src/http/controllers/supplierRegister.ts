@@ -1,5 +1,6 @@
 
 import { PrismaSuppliersRepository } from "@/repositories/prisma/prisma-supliers-repository";
+import { SupplierNameError } from "@/use-cases/errors/supplierError";
 import { SupplierRegisterUseCase } from "@/use-cases/supplierRegister-use-case";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
@@ -52,8 +53,12 @@ export async function supplierRegister(request: FastifyRequest, reply: FastifyRe
           email,
           paymentCondTerm
         })
-      } catch {
-        return reply.status(409).send()
+      } catch (error){
+        if (error instanceof SupplierNameError) {
+          return reply.status(409).send()
+        }
+        return reply.status(500).send()
+
       }
 
 

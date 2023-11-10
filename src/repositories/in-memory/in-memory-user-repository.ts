@@ -1,10 +1,9 @@
 
+
 export class InMemoryUsersRepository {
+    public users: any[] = []
 
-    // base teste para InMemoryRepository
-     public user: any[] = []
-
-     async create(data: any) {
-        this.user = data
-     }
+    async create(data: any) {
+        this.users.push(data);
     }
+}
