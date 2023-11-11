@@ -1,13 +1,14 @@
 import { UsersRepository } from "@/repositories/user-repository";
+import { User } from "@prisma/client";
 import { hash } from "bcryptjs";
 import { UserAlreadyExistsError } from "./errors/user-already-exist-error";
 
 
 interface RegisterUseCaseRequest {
-    name: string,
-    email: string,
+    name: string
+    email: string
     password: string
-    role: string | undefined
+    isAdmin: boolean
     colabStatus: string
     street: string
     addressLocalCode: string
@@ -16,6 +17,10 @@ interface RegisterUseCaseRequest {
     phone: string
 }
 
+// add interface de resposta
+interface RegisterUseCaseResponse {
+    user: User
+}
 
 export class RegisterUseCase {
 
@@ -25,15 +30,15 @@ export class RegisterUseCase {
         name, 
         email, 
         password, 
-        role,
+        isAdmin,
         colabStatus,
         street,
         addressLocalCode,
         addressLocalZone,
         addressLocal,
         phone,
-        // destrutura
-    }: RegisterUseCaseRequest) {
+        // destrutura e adicionar a promise usecaseResponse
+    }: RegisterUseCaseRequest) : Promise<RegisterUseCaseResponse> {
 
         const userWithSameEmail = await this.usersRpository.findByEmail(email)
         
@@ -43,11 +48,12 @@ export class RegisterUseCase {
 
         const passwordHash = await hash(password, 6)
 
-        await this.usersRpository.createUser({
+        // Guardar numa variável para poder usa-la em promise
+        const user = await this.usersRpository.createUser({
             name,
             email,
             passwordHash,
-            role,
+            isAdmin,
             colabStatus,
             street,
             addressLocalCode,
@@ -56,6 +62,10 @@ export class RegisterUseCase {
             phone,
         })
     
+        // Retornar um obj com o meu user
+        return {
+            user
+        }
 
     }
 

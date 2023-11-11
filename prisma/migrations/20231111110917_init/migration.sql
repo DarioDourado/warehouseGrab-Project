@@ -1,9 +1,3 @@
--- CreateEnum
-CREATE TYPE "Role" AS ENUM ('USER', 'ADMIN');
-
--- CreateEnum
-CREATE TYPE "PackOrUnit" AS ENUM ('PACK', 'UNIT');
-
 -- CreateTable
 CREATE TABLE "UserTeste" (
     "id" SERIAL NOT NULL,
@@ -31,7 +25,7 @@ CREATE TABLE "users" (
     "name" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "password_Hash" TEXT NOT NULL,
-    "role" "Role" NOT NULL DEFAULT 'USER',
+    "isAdmin" BOOLEAN NOT NULL DEFAULT false,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "colabStatus" TEXT NOT NULL,
@@ -52,12 +46,12 @@ CREATE TABLE "products" (
     "name" TEXT NOT NULL,
     "description" TEXT NOT NULL,
     "price" DECIMAL(65,30) NOT NULL,
-    "tax_id" INTEGER NOT NULL,
+    "tax_id" TEXT NOT NULL,
     "photo" TEXT NOT NULL,
-    "packOrUn" "PackOrUnit" NOT NULL DEFAULT 'UNIT',
+    "isPack" BOOLEAN NOT NULL DEFAULT false,
     "packUnQt" INTEGER NOT NULL,
     "expirationDate" TEXT,
-    "category_id" INTEGER,
+    "category_id" TEXT NOT NULL,
     "stockRecQt" INTEGER,
     "alert1" INTEGER,
     "alert2" INTEGER,
@@ -70,8 +64,8 @@ CREATE TABLE "products" (
 
 -- CreateTable
 CREATE TABLE "taxes" (
-    "id" SERIAL NOT NULL,
-    "taxValue" INTEGER NOT NULL DEFAULT 23,
+    "id" TEXT NOT NULL,
+    "taxValue" TEXT NOT NULL,
     "description" TEXT NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -81,7 +75,7 @@ CREATE TABLE "taxes" (
 
 -- CreateTable
 CREATE TABLE "productCategory" (
-    "id" SERIAL NOT NULL,
+    "id" TEXT NOT NULL,
     "productCategory" TEXT,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -165,7 +159,7 @@ CREATE UNIQUE INDEX "stockControl_storageLocationOut_id_key" ON "stockControl"("
 ALTER TABLE "products" ADD CONSTRAINT "products_tax_id_fkey" FOREIGN KEY ("tax_id") REFERENCES "taxes"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "products" ADD CONSTRAINT "products_category_id_fkey" FOREIGN KEY ("category_id") REFERENCES "productCategory"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "products" ADD CONSTRAINT "products_category_id_fkey" FOREIGN KEY ("category_id") REFERENCES "productCategory"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "products" ADD CONSTRAINT "products_stockControl_id_fkey" FOREIGN KEY ("stockControl_id") REFERENCES "stockControl"("id") ON DELETE SET NULL ON UPDATE CASCADE;

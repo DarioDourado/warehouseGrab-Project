@@ -13,7 +13,7 @@ export async function productRegister(request: FastifyRequest, reply: FastifyRep
         price: z.number(),
         tax: z.string(),
         photo: z.string(),
-        packOrUn: z.enum(['PACK', 'UNIT']),
+        isPack: z.boolean(),
         packUnQt: z.number(),
         expirationDate: z.string().optional(),
         productCategory: z.string().optional(),
@@ -30,7 +30,7 @@ export async function productRegister(request: FastifyRequest, reply: FastifyRep
         price,
         tax,
         photo,
-        packOrUn,
+        isPack,
         packUnQt,
         expirationDate,
         productCategory,
@@ -48,7 +48,7 @@ export async function productRegister(request: FastifyRequest, reply: FastifyRep
             price,
             tax,
             photo,
-            packOrUn,
+            isPack,
             packUnQt,
             expirationDate,
             productCategory,
@@ -57,7 +57,6 @@ export async function productRegister(request: FastifyRequest, reply: FastifyRep
             alert2,
             }
          }) 
-       console.log(prismaProduct)
  
  }
 

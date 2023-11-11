@@ -1,4 +1,5 @@
 import { FastifyInstance } from "fastify";
+import { authenticate } from "./controllers/authenticate";
 import { productCategoryRegister } from "./controllers/productCategoryRegister";
 import { productRegisterTest } from "./controllers/productRegisterTeste";
 import { localStorageRegister } from "./controllers/storageLocarionRegister";
@@ -14,4 +15,5 @@ export async function appRoutes(app: FastifyInstance) {
     app.post('/productcategoryregister', productCategoryRegister)
     app.post('/localstorage', localStorageRegister)
     app.post('/productregister', productRegisterTest)
+    app.post('/sessions', authenticate)
 }
