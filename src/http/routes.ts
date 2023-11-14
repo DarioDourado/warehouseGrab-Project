@@ -1,7 +1,7 @@
 import { FastifyInstance } from "fastify";
 import { authenticate } from "./controllers/authenticate";
 import { productCategoryRegister } from "./controllers/productCategoryRegister";
-import { productRegisterTest } from "./controllers/productRegisterTeste";
+import { productRegister } from "./controllers/productRegister";
 import { localStorageRegister } from "./controllers/storageLocarionRegister";
 import { supplierRegister } from "./controllers/supplierRegister";
 import { taxRegister } from "./controllers/taxRegister";
@@ -14,6 +14,6 @@ export async function appRoutes(app: FastifyInstance) {
     app.post('/supplierregister', supplierRegister)
     app.post('/productcategoryregister', productCategoryRegister)
     app.post('/localstorage', localStorageRegister)
-    app.post('/productregister', productRegisterTest)
+    app.post('/productregister', productRegister)
     app.post('/sessions', authenticate)
 }

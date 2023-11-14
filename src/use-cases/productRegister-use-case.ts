@@ -1,33 +1,32 @@
 import { ProductsRepository } from "@/repositories/productRegister-repository";
-import { Product } from "@prisma/client";
-
+import { ProductCategoryAlreadyExistsError, SKUAlreadyExistsError, TaxValueAlreadyExistsError, UPCAlreadyExistsError } from "./errors/productError";
 
 interface ProductUseCaseRequest {
-    upc: string,
-    sku: string,
-    name: string,
-    description: string,
-    price: number,
-    tax: string,
-    photo: string,
-    packOrUn: string,
-    packUnQt: number,
-    expirationDate: string | undefined,
-    productCategory: string | undefined,
-    stockRecQt: number | undefined,
-    alert1: number | undefined,
-    alert2: number | undefined,
+    upc: string;
+    sku: string;
+    name: string;
+    description: string;
+    price: number;
+    tax: string;
+    photo: string;
+    isPack: boolean;
+    packUnQt: number;
+    expirationDate?: string;
+    productCategory?: string;
+    stockRecQt?: number;
+    alert1?: number;
+    alert2?: number;
 }
 
-interface ProductUseCaseResponse {
-    user: Product
-}
+// interface ProductUseCaseResponse {
+//     user: Product;
+// }
 
 export class ProductUseCase {
 
-    constructor( private productsRepository: ProductsRepository ){}
-    async execute({ 
+    constructor(private productsRepository: ProductsRepository) {}
 
+    async execute({
         upc,
         sku,
         name,
@@ -35,7 +34,7 @@ export class ProductUseCase {
         price,
         tax,
         photo,
-        packOrUn,
+        isPack,
         packUnQt,
         expirationDate,
         productCategory,
@@ -43,36 +42,51 @@ export class ProductUseCase {
         alert1,
         alert2,
     }: ProductUseCaseRequest) {
-
-
-        // const upcWithSameRef = await this.productsRepository.findByUPC(upc)
-
-        // const SkuWithSameRef = await this.productsRepository.findBySKU(sku)
-
-        // console.log(upcWithSameRef, SkuWithSameRef)
-
         
-        // if (upcWithSameRef || SkuWithSameRef) {
-        //     throw new Error
-        // } 
+        const existUPC = await this.productsRepository.findByUPC(upc)
+        if (existUPC) {
+            throw new UPCAlreadyExistsError;
+        }
+        const existSKU = await this.productsRepository.findBySKU(sku)
+        if (existSKU) {
+            throw new SKUAlreadyExistsError;
+        }
 
-        console.log('passou if')
-        
+        const existingTax = await this.productsRepository.findTax(tax)
+        if (!existingTax) {
+            throw new TaxValueAlreadyExistsError;
+        }
+        const existingProductCategory = await this.productsRepository.findByCategory(productCategory)
+
+        if (!existingProductCategory) {
+            throw new ProductCategoryAlreadyExistsError;
+        }
+
         await this.productsRepository.createProduct({
-            upc,
             sku,
+            upc,
             name,
             description,
             price,
-            tax,
             photo,
-            packOrUn,
+            isPack,
             packUnQt,
             expirationDate,
-            productCategory,
             stockRecQt,
             alert1,
             alert2,
+            tax: {
+                connect: {
+                    taxValue: tax,
+                },
+            },
+            productCategory: {
+                connect: {
+                    productCategory,
+                },
+            },
+            
         })
+        
     }
-}    
+}

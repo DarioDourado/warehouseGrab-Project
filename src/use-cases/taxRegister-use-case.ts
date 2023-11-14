@@ -1,4 +1,5 @@
 import { TaxesRepository } from "@/repositories/tax-repository"
+import { TaxValueAlreadyExistsError } from "./errors/productError"
 
 
 
@@ -18,7 +19,7 @@ export class TaxRegisterUseCase {
         const taxValueWithSameValue = await this.taxRpository.findTaxByValue(taxValue)
 
         if (taxValueWithSameValue) {
-        throw Error('Please Choose a diferente value')
+        throw TaxValueAlreadyExistsError
         }
         console.log(' taxRegister usecase')
         await this.taxRpository.createTax({

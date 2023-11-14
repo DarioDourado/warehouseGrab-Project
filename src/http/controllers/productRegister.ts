@@ -1,5 +1,5 @@
-
-import { prisma } from "@/lib/prisma";
+import { PrismaProductsRepository } from "@/repositories/prisma/prisma-productRegister-repository";
+import { ProductUseCase } from "@/use-cases/productRegister-use-case";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 
@@ -20,9 +20,9 @@ export async function productRegister(request: FastifyRequest, reply: FastifyRep
         stockRecQt: z.number().optional(),
         alert1: z.number().optional(),
         alert2: z.number().optional(),
-    })
+    });
 
-    const { 
+    const {
         upc,
         sku,
         name,
@@ -37,10 +37,14 @@ export async function productRegister(request: FastifyRequest, reply: FastifyRep
         stockRecQt,
         alert1,
         alert2
-    } = productRegisterBodySchema.parse(request.body)
- 
-         const prismaProduct = await prisma.product.create({
-            data:{
+    } = productRegisterBodySchema.parse(request.body);
+
+    // Adicione validação adicional para tax e productCategory
+    try {
+        const productsRegisterRepository = new PrismaProductsRepository
+        const productRegisterUseCase = new ProductUseCase(productsRegisterRepository)
+
+        await productRegisterUseCase.execute({
             upc,
             sku,
             name,
@@ -54,9 +58,12 @@ export async function productRegister(request: FastifyRequest, reply: FastifyRep
             productCategory,
             stockRecQt,
             alert1,
-            alert2,
-            }
-         }) 
- 
- }
+            alert2
+        });
+    } catch (error) {
+        console.error(error);
+        return reply.status(409).send("Error creating product");
+    }
 
+    return reply.status(201).send("Product created successfully");
+}
