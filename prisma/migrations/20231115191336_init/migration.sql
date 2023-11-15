@@ -57,7 +57,6 @@ CREATE TABLE "products" (
     "alert2" INTEGER,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "stockControl_id" INTEGER,
 
     CONSTRAINT "products_pkey" PRIMARY KEY ("id")
 );
@@ -74,13 +73,13 @@ CREATE TABLE "taxes" (
 );
 
 -- CreateTable
-CREATE TABLE "productCategory" (
+CREATE TABLE "product_categories" (
     "id" TEXT NOT NULL,
     "productCategory" TEXT,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-    CONSTRAINT "productCategory_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "product_categories_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -141,7 +140,7 @@ CREATE UNIQUE INDEX "products_sku_key" ON "products"("sku");
 CREATE UNIQUE INDEX "taxes_taxValue_key" ON "taxes"("taxValue");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "productCategory_productCategory_key" ON "productCategory"("productCategory");
+CREATE UNIQUE INDEX "product_categories_productCategory_key" ON "product_categories"("productCategory");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "suppliers_email_key" ON "suppliers"("email");
@@ -159,10 +158,7 @@ CREATE UNIQUE INDEX "stockControl_storageLocationOut_id_key" ON "stockControl"("
 ALTER TABLE "products" ADD CONSTRAINT "products_tax_id_fkey" FOREIGN KEY ("tax_id") REFERENCES "taxes"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "products" ADD CONSTRAINT "products_category_id_fkey" FOREIGN KEY ("category_id") REFERENCES "productCategory"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "products" ADD CONSTRAINT "products_stockControl_id_fkey" FOREIGN KEY ("stockControl_id") REFERENCES "stockControl"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "products" ADD CONSTRAINT "products_category_id_fkey" FOREIGN KEY ("category_id") REFERENCES "product_categories"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "stockControl" ADD CONSTRAINT "stockControl_storageLocationIn_id_fkey" FOREIGN KEY ("storageLocationIn_id") REFERENCES "storageLocation"("id") ON DELETE SET NULL ON UPDATE CASCADE;
