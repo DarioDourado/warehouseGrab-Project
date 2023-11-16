@@ -16,12 +16,13 @@ export class PrismaTaxesRepository implements TaxesRepository{
         return taxValueNumber
     }
 
-
     async createTax (data: Prisma.TaxCreateInput) {
         const tax = await prisma.tax.create( {data} )
-        console.log(' TaxCreateInput, a seguir ao taxValueNumber')
-        console.log(tax)
         return tax
+    }
 
+    async getAllTaxes() {
+        const taxes = await prisma.tax.findMany();
+        return taxes;
     }
 }

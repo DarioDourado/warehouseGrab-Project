@@ -1,11 +1,19 @@
 import fastify from "fastify";
 import { ZodError } from "zod";
 import { env } from "./env";
-import { appRoutes } from "./http/routes";
+import { localStorageRoutes } from "./http/controllers/localStorage/routes";
+import { productsRoutes } from "./http/controllers/products/routes";
+import { productsCategiesRoutes } from "./http/controllers/productsCategory/routes";
+import { suppliersRoutes } from "./http/controllers/suppliers/routes";
+import { usersRoutes } from "./http/controllers/users/routes";
 
 export const app = fastify()
 
-app.register(appRoutes)
+app.register(usersRoutes)
+app.register(localStorageRoutes)
+app.register(productsRoutes)
+app.register(productsCategiesRoutes)
+app.register(suppliersRoutes)
 
 
 // ERROR´s Handling

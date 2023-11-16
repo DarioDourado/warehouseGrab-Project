@@ -19,8 +19,11 @@ export class PrismaSuppliersRepository implements SuppliersRepository{
 
     async createSupplier (data: Prisma.SupplierCreateInput) {
         const supplier = await prisma.supplier.create(  {data}  )
-
         return supplier
- 
+    }
+
+    async getAllSuppliers() {
+        const suppliers = await prisma.supplier.findMany();
+        return suppliers;
     }
 }

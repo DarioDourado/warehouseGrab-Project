@@ -1,7 +1,6 @@
 
-import { PrismaTaxesRepository } from "@/repositories/prisma/prisma-tax-repository";
 import { TaxNameError } from "@/use-cases/errors/taxErrors";
-import { TaxRegisterUseCase } from "@/use-cases/taxRegister-use-case";
+import { makeGetTaxesUseCase } from "@/use-cases/factories/make-taxes-use-case";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 
@@ -19,15 +18,11 @@ export async function taxRegister(request: FastifyRequest, reply: FastifyReply) 
         description
 
       } = taxRegisterBodySchema.parse(request.body)
-      console.log(' Controller taxRegisterBodySchema')
-     try {
-      console.log(' Controller PrismaTaxesRepository')
-        const taxesRepository = new PrismaTaxesRepository()
-        console.log(' Controller TaxRegisterUseCase')
-        const taxRegister = new TaxRegisterUseCase(taxesRepository)
 
-    
-        console.log(' Controller taxRegister')
+     try {
+
+        const taxRegister = makeGetTaxesUseCase()
+
         await taxRegister.execute({
           taxValue,
           description

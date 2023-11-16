@@ -1,5 +1,4 @@
-import { PrismaProductsRepository } from "@/repositories/prisma/prisma-productRegister-repository";
-import { ProductUseCase } from "@/use-cases/productRegister-use-case";
+import { makeGetProductsUseCase } from "@/use-cases/factories/make-products-use-case";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 
@@ -39,10 +38,9 @@ export async function productRegister(request: FastifyRequest, reply: FastifyRep
         alert2
     } = productRegisterBodySchema.parse(request.body);
 
-    // Adicione validação adicional para tax e productCategory
     try {
-        const productsRegisterRepository = new PrismaProductsRepository
-        const productRegisterUseCase = new ProductUseCase(productsRegisterRepository)
+
+        const productRegisterUseCase = makeGetProductsUseCase()
 
         await productRegisterUseCase.execute({
             upc,

@@ -1,5 +1,4 @@
-import { PrismaStorageLocationRepository } from "@/repositories/storageLocation-repository";
-import { StorageLocationRegisterUseCase } from "@/use-cases/localStorage-use-case";
+import { makeGetLocalStorageUseCase } from "@/use-cases/factories/make-localStorage";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 
@@ -20,10 +19,7 @@ export async function localStorageRegister(request: FastifyRequest, reply: Fasti
 
      try {
 
-        const localStorageRepository = new PrismaStorageLocationRepository()
-
-
-        const localStorageRegister = new StorageLocationRegisterUseCase(localStorageRepository)
+        const localStorageRegister = makeGetLocalStorageUseCase()
                 
         await localStorageRegister.execute({
           name,

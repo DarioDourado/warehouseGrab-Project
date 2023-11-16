@@ -16,12 +16,16 @@ export class PrismaProductCategoryRepository implements ProductsCategoryReposito
         return productCategoryName
     }
 
-
     async createProductCategory (data: Prisma.ProductCategoryCreateInput) {
         const productCategory = await prisma.productCategory.create( {data} )
-        console.log(' ProductCatecoryCreateInput, a seguir ao ProductCatecoryValueNumber')
-        console.log(productCategory)
+
         return productCategory
 
     }
+
+    async getAllProductsCategories() {
+        const getAllProductsCategorie = await prisma.productCategory.findMany();
+        return getAllProductsCategorie;
+    }
+    
 }

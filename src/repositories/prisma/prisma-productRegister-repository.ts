@@ -47,4 +47,9 @@ export class PrismaProductsRepository implements ProductsRepository {
     const product = await prisma.product.create({ data });
     return product;
   }
+
+  async getAllProducts() {
+    const users = await prisma.product.findMany();
+    return users;
+}
 }

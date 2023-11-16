@@ -1,7 +1,6 @@
 
-import { PrismaSuppliersRepository } from "@/repositories/prisma/prisma-supliers-repository";
 import { SupplierNameError } from "@/use-cases/errors/supplierError";
-import { SupplierRegisterUseCase } from "@/use-cases/supplierRegister-use-case";
+import { makeGetSuppliersUseCase } from "@/use-cases/factories/make-suppliers-use-case";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 
@@ -37,8 +36,7 @@ export async function supplierRegister(request: FastifyRequest, reply: FastifyRe
       } = supplierRegisterBodySchema.parse(request.body)
 
       try {
-        const supplierRpository = new PrismaSuppliersRepository()
-        const supplierRegisterUseCase = new SupplierRegisterUseCase(supplierRpository)
+        const supplierRegisterUseCase = makeGetSuppliersUseCase()
 
         await supplierRegisterUseCase.execute({
           name,

@@ -1,6 +1,5 @@
 
-import { PrismaProductCategoryRepository } from "@/repositories/prisma/prisma-productCategory.repository";
-import { ProductCategoryRegisterUseCase } from "@/use-cases/productCategory-use-case";
+import { makeGetProductsCategorieUseCase } from "@/use-cases/factories/make-products-categorie-use-case";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 
@@ -16,13 +15,11 @@ export async function productCategoryRegister(request: FastifyRequest, reply: Fa
 
     try {
 
-      const productsCategoryWithSameName =  new PrismaProductCategoryRepository()
-      const productCategoryRegister = new ProductCategoryRegisterUseCase(productsCategoryWithSameName)
+      const productCategoryRegister = makeGetProductsCategorieUseCase()
 
       await productCategoryRegister.execute({
         productCategory
       })
-
 
     } catch {
       return reply.status(409).send('Tax Register n Passou')
