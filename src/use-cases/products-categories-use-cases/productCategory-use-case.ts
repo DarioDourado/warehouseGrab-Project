@@ -1,6 +1,5 @@
-import { ProductsCategoryRepository } from "@/repositories/productCategory-repository"
-import { ProductCategoryAlreadyExistsError } from "./errors/productError"
-
+import { ProductsCategoryRepository } from "@/repositories/productsCategory-repositories/productCategory-repository"
+import { ProductCategoryAlreadyExistsError } from "../errors/productError"
 
 
 interface ProductCategoryRegisterUseCaseRequest {

@@ -1,5 +1,5 @@
-import { PrismaUsersRepository } from '@/repositories/prisma/prisma-users-repository'
-import { RegisterUseCase } from '../userRegister-use-case'
+import { PrismaUsersRepository } from "@/repositories/prisma/users/prisma-users-repository"
+import { RegisterUseCase } from "../users-use.cases/userRegister-use-case"
 
 
 export function makeGetUserUseCase() {

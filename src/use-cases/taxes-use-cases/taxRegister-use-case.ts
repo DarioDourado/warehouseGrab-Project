@@ -1,6 +1,5 @@
-import { TaxesRepository } from "@/repositories/tax-repository"
-import { TaxValueAlreadyExistsError } from "./errors/productError"
-
+import { TaxesRepository } from "@/repositories/taxes-repositories/tax-repository"
+import { TaxValueAlreadyExistsError } from "../errors/productError"
 
 
 interface TaxRegisterUseCaseRequest {

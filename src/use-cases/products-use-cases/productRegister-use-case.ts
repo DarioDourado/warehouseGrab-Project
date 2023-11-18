@@ -1,5 +1,6 @@
-import { ProductsRepository } from "@/repositories/productRegister-repository";
-import { ProductCategoryAlreadyExistsError, SKUAlreadyExistsError, TaxValueAlreadyExistsError, UPCAlreadyExistsError } from "./errors/productError";
+import { ProductsRepository } from "@/repositories/products-repositories/productRegister-repository";
+import { ProductCategoryAlreadyExistsError, SKUAlreadyExistsError, TaxValueAlreadyExistsError, UPCAlreadyExistsError } from "../errors/productError";
+
 
 interface ProductUseCaseRequest {
     upc: string;

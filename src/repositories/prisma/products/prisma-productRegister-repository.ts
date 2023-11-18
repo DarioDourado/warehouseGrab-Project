@@ -1,15 +1,16 @@
 import { prisma } from "@/lib/prisma";
+import { ProductsRepository } from "@/repositories/products-repositories/productRegister-repository";
 import { Prisma } from "@prisma/client";
-import { ProductsRepository } from "../productRegister-repository";
+
 
 export class PrismaProductsRepository implements ProductsRepository {
   async findByUPC(upc: string) {
     const product = await prisma.product.findUnique({
       where: {
-        upc,
-      },
-    });
-
+        upc
+      }
+    })
+    
     return product;
   }
 
@@ -19,7 +20,7 @@ export class PrismaProductsRepository implements ProductsRepository {
         sku,
       },
     });
-
+    
     return product;
   }
 

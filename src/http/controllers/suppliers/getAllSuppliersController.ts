@@ -1,4 +1,5 @@
-import { PrismaSuppliersRepository } from "@/repositories/prisma/prisma-supliers-repository";
+
+import { PrismaSuppliersRepository } from "@/repositories/prisma/suppliers/prisma-supliers-repository";
 import { FastifyReply, FastifyRequest } from "fastify";
 
 export async function getAllSuppliersController(request: FastifyRequest, reply: FastifyReply) {

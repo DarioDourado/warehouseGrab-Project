@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/prisma";
+import { ProductsCategoryRepository } from "@/repositories/productsCategory-repositories/productCategory-repository";
 import { Prisma } from "@prisma/client";
-import { ProductsCategoryRepository } from "../productCategory-repository";
+
 
 
 

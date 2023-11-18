@@ -1,4 +1,5 @@
-import { PrismaProductsRepository } from "@/repositories/prisma/prisma-productRegister-repository";
+
+import { PrismaProductsRepository } from "@/repositories/prisma/products/prisma-productRegister-repository";
 import { FastifyReply, FastifyRequest } from "fastify";
 
 export async function getAllProductsController(request: FastifyRequest, reply: FastifyReply) {

@@ -1,7 +1,8 @@
 
 import { prisma } from "@/lib/prisma";
 import { Prisma } from "@prisma/client";
-import { StorageLocationRepository } from "./prisma/prisma-storageLocation-repository";
+import { StorageLocationRepository } from "../prisma/storage/prisma-storageLocation-repository";
+
 
 
 

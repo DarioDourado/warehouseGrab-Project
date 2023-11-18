@@ -1,7 +1,7 @@
-
 import { prisma } from "@/lib/prisma";
+import { TaxesRepository } from "@/repositories/taxes-repositories/tax-repository";
 import { Prisma } from "@prisma/client";
-import { TaxesRepository } from "../tax-repository";
+
 
 
 export class PrismaTaxesRepository implements TaxesRepository{

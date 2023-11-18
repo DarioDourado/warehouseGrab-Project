@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/prisma";
+import { SuppliersRepository } from "@/repositories/suppliers-repositories/supplier-repository";
 import { Prisma } from "@prisma/client";
-import { SuppliersRepository } from "../supplier-repository";
 
 
 // depois de termos um interface comum, podemos e devemos de "implementar" na nossa class.

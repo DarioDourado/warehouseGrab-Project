@@ -1,4 +1,5 @@
-import { ProductsUpdateRepository } from "@/repositories/productUpdate-repository";
+import { ProductsUpdateRepository } from "@/repositories/products-repositories/productUpdate-repository";
+
 
 export interface ProductUpdateUseCaseRequest {
     id: string;

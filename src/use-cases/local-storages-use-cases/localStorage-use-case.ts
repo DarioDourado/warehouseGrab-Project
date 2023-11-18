@@ -1,5 +1,6 @@
-import { StorageLocationRepository } from "@/repositories/prisma/prisma-storageLocation-repository"
-import { LocalStorageNameError } from "./errors/storage-errors"
+import { StorageLocationRepository } from "@/repositories/prisma/storage/prisma-storageLocation-repository"
+import { LocalStorageNameError } from "../errors/storage-errors"
+
 
 interface StorageLocationRegisterUseCaseRequest {
     name: string
