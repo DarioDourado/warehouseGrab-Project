@@ -89,6 +89,7 @@ export async function productUpdaterController(request: FastifyRequest, reply: F
             stockRecQt: newStockRecQt,
             alert1: newAlert1,
             alert2: newAlert2,
+            
         },
     })
 }

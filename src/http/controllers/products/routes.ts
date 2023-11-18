@@ -7,7 +7,6 @@ import { productUpdaterController } from "./update-product-controller";
 
 export async function productsRoutes(app: FastifyInstance) {
 
-
     app.post('/productregister', productRegister)
 
     app.get('/products', getAllProductsController )
