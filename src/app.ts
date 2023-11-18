@@ -5,6 +5,7 @@ import { localStorageRoutes } from "./http/controllers/localStorage/routes";
 import { productsRoutes } from "./http/controllers/products/routes";
 import { productsCategiesRoutes } from "./http/controllers/productsCategory/routes";
 import { suppliersRoutes } from "./http/controllers/suppliers/routes";
+import { taxesRoutes } from "./http/controllers/taxes/routes";
 import { usersRoutes } from "./http/controllers/users/routes";
 
 export const app = fastify()
@@ -14,6 +15,7 @@ app.register(localStorageRoutes)
 app.register(productsRoutes)
 app.register(productsCategiesRoutes)
 app.register(suppliersRoutes)
+app.register(taxesRoutes)
 
 
 // ERROR´s Handling

@@ -48,8 +48,8 @@ model User {
 
 model Product {
   id                String           @id @default(uuid())
-  upc               String           @unique
-  sku               String           @unique
+  upc               String
+  sku               String
   name              String
   description       String
   price             Decimal

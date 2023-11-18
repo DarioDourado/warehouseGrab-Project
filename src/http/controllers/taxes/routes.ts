@@ -1,4 +1,5 @@
 import { FastifyInstance } from "fastify";
+
 import { getAllTaxesController } from "./getAllTaxes";
 import { taxRegister } from "./taxRegister";
 
