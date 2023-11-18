@@ -92,7 +92,7 @@ model ProductCategory {
 }
 
 model Supplier {
-  id               Int      @id @default(autoincrement())
+  id               String   @id @default(uuid())
   name             String
   taxNumber        String
   street           String
@@ -111,7 +111,7 @@ model Supplier {
 }
 
 model StorageLocation {
-  id          Int            @id @default(autoincrement())
+  id          String         @id @default(uuid())
   name        String         @unique
   description String
   locationI   StockControl[] @relation("locationIn")
@@ -121,12 +121,12 @@ model StorageLocation {
 }
 
 model StockControl {
-  id                   Int              @id @default(autoincrement())
+  id                   String           @id @default(uuid())
   quantity             Int
   storageLocationI     StorageLocation? @relation("locationIn", fields: [storageLocationInId], references: [id])
-  storageLocationInId  Int?             @unique @map("storageLocationIn_id")
+  storageLocationInId  String           @unique @map("storageLocationIn_id")
   storageLocationO     StorageLocation? @relation("locationOut", fields: [storageLocationOutId], references: [id])
-  storageLocationOutId Int?             @unique @map("storageLocationOut_id")
+  storageLocationOutId String?          @unique @map("storageLocationOut_id")
 
   @@map("stockControl")
 }

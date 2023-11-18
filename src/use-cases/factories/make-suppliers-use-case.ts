@@ -1,5 +1,6 @@
 import { PrismaSuppliersRepository } from "@/repositories/prisma/prisma-supliers-repository"
-import { SupplierRegisterUseCase } from "../supplierRegister-use-case"
+import { SupplierRegisterUseCase } from "../add-supplier-use-case"
+
 
 export function makeGetSuppliersUseCase() {
     const supplierRpository = new PrismaSuppliersRepository()

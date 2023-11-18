@@ -1,6 +1,7 @@
 import { FastifyInstance } from "fastify";
-import { getAllSuppliersController } from "./getAllSuppliersController";
-import { supplierRegister } from "./supplierRegister";
+import { supplierRegister } from "./add-supplier-register-controller";
+import { getAllSuppliersController } from "./getAll-Suppliers-controller-controller";
+
 
 export async function suppliersRoutes(app: FastifyInstance) {
 

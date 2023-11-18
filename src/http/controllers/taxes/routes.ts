@@ -1,7 +1,6 @@
 import { FastifyInstance } from "fastify";
-
-import { getAllTaxesController } from "./getAllTaxes";
-import { taxRegister } from "./taxRegister";
+import { taxRegister } from "./add-tax-controller";
+import { getAllTaxesController } from "./getAll-taxes-controller";
 
 export async function taxesRoutes(app: FastifyInstance) {
 

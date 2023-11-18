@@ -1,5 +1,5 @@
-import { PrismaProductCategoryRepository } from "@/repositories/prisma/prisma-productCategory.repository"
-import { ProductCategoryRegisterUseCase } from "../productCategory-use-case"
+import { PrismaProductCategoryRepository } from "@/repositories/prisma/prisma-product-category-repository"
+import { ProductCategoryRegisterUseCase } from "../product-category-use-case"
 
 
 export function makeGetProductsCategorieUseCase() {

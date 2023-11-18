@@ -1,6 +1,6 @@
 import { FastifyInstance } from "fastify";
-import { getAllProductsCategoriesController } from "./getAllProductsCategories";
-import { productCategoryRegister } from "./productCategoryRegister";
+import { productCategoryRegister } from "./add-product-category";
+import { getAllProductsCategoriesController } from "./getAll-productsCategories-controllers";
 
 
 export async function productsCategiesRoutes(app: FastifyInstance) {

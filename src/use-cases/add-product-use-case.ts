@@ -1,4 +1,4 @@
-import { ProductsRepository } from "@/repositories/productRegister-repository";
+import { ProductsRepository } from "@/repositories/product-register-repository";
 import { ProductCategoryAlreadyExistsError, SKUAlreadyExistsError, TaxValueAlreadyExistsError, UPCAlreadyExistsError } from "./errors/productError";
 
 interface ProductUseCaseRequest {

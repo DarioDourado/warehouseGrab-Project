@@ -1,4 +1,4 @@
-import { ProductsCategoryRepository } from "@/repositories/productCategory-repository"
+import { ProductsCategoryRepository } from "@/repositories/product-category-repository"
 import { ProductCategoryAlreadyExistsError } from "./errors/productError"
 
 

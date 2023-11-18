@@ -1,11 +1,16 @@
 import { FastifyInstance } from "fastify";
-import { localStorageRegister } from "./storageLocationRegister";
+import { localStorageRegister } from "./add-storage-location";
+import { localStorageDeleteController } from "./delete-storage-controller";
+import { getAllLocalStorageController } from "./get-all-storage-location-controller";
+
 
 
 export async function localStorageRoutes(app: FastifyInstance) {
 
     app.post('/localstorage', localStorageRegister)
 
-    
+    app.get('/localstorages', getAllLocalStorageController)
+
+    app.delete('/localstoragedelete/:id', localStorageDeleteController)
 
 }

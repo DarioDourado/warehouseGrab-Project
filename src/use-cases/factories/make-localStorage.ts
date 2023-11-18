@@ -1,5 +1,6 @@
-import { PrismaStorageLocationRepository } from "@/repositories/storageLocation-repository"
-import { StorageLocationRegisterUseCase } from "../localStorage-use-case"
+import { PrismaStorageLocationRepository } from "@/repositories/storage-location-repository"
+import { StorageLocationRegisterUseCase } from "../getAll-local-storage-use-case"
+
 
 export function makeGetLocalStorageUseCase() {
     const localStorageRepository = new PrismaStorageLocationRepository()

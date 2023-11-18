@@ -1,4 +1,4 @@
-import { PrismaProductCategoryRepository } from "@/repositories/prisma/prisma-productCategory.repository";
+import { PrismaProductCategoryRepository } from "@/repositories/prisma/prisma-product-category-repository";
 import { FastifyReply, FastifyRequest } from "fastify";
 
 export async function getAllProductsCategoriesController(request: FastifyRequest, reply: FastifyReply) {

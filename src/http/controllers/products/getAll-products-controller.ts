@@ -1,4 +1,4 @@
-import { PrismaProductsRepository } from "@/repositories/prisma/prisma-productRegister-repository";
+import { PrismaProductsRepository } from "@/repositories/prisma/prisma-product-register-repository";
 import { FastifyReply, FastifyRequest } from "fastify";
 
 export async function getAllProductsController(request: FastifyRequest, reply: FastifyReply) {
@@ -6,7 +6,7 @@ export async function getAllProductsController(request: FastifyRequest, reply: F
 
     try {
         const products = await productsRepository.getAllProducts()
-        reply.send(products);
+        reply.status(200).send(products);
     } catch (error) {
         reply.status(500).send({ error: 'Internal Server Error' });
     }

@@ -1,4 +1,5 @@
-import { PrismaProductsRepository } from "@/repositories/prisma/prisma-productRegister-repository";
+
+import { PrismaProductsRepository } from "@/repositories/prisma/prisma-product-register-repository";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from 'zod';
 

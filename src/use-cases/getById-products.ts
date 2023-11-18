@@ -1,6 +1,4 @@
-
-
-import { ProductsRepository } from '@/repositories/productRegister-repository'
+import { ProductsRepository } from '@/repositories/product-register-repository'
 import { Product } from '@prisma/client'
 import { ResourceNotFoundError } from './errors/recource-not-found-error'
 
