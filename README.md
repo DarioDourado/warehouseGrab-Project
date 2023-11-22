@@ -6,12 +6,12 @@ Regras de Negócio
 
 Utilizadores
 [x] O utilizador não deve poder registar-se com um email já existente ou duplicado.
-[ ] O Utilizador deve de necessitar de se autenticar para visualizar o seu perfil.
+[x] O Utilizador deve de necessitar de se autenticar para visualizar o seu perfil.
 
 
 Produtos - CRUD
 [x]	Deve ser possível de Visualizar Lista com todos os produtos.
-[ ]	Deve ser possível entrar nos detalhes do produto selecionado (Front-end) (preparado para entrar atravez de ID).
+[x]	⁡⁣⁣⁢Deve ser possível entrar nos detalhes do produto selecionado (Front-end) (preparado para entrar atravez de ID)⁡.
 [x]	Deve ser possível editar um produto já criado.
 [x]	Deve ser possível adicionar Produtos á lista de produtos.
 [x]	Deve ser possível remover Produtos da lista de produtos.
@@ -29,37 +29,39 @@ Fornecedores - CRUD
 [x]	Deve ser possível visualizar Lista com Todos os Fornecedores.
 [x]	Deve ser possível Criar um Fornecedor.
 [x]	Não Deve ser possível Criar um Fornecedor com um email ou NIF já existentes na Base de Dados.
-[ ]	Deve ser possível entrar nos detalhes do fornecedor selecionado (Front-end) (preparado para entrar atravez de ID).
+[x]	⁡⁣⁣⁢Deve ser possível entrar nos detalhes do fornecedor selecionado (Front-end) (preparado para entrar atravez de ID)⁡.
 [x]	Deve ser possível editar um fornecedor.
 [x]	Deve ser possível adicionar um fornecedor.
 [x]	Deve ser possível remover qualquer fornecedor.
 
 Utilizador - CRUD
-[x]	Deve ser possível visualizar Lista com Todos os Foutilizador.
+[x]	Deve ser possível visualizar Lista com Todos os utilizador.
 [x]	Deve ser possível Criar um utilizador.
 [x]	Não Deve ser possível Criar um utilizador com um email já existente na Base de Dados.
-[ ]	Deve ser possível entrar nos detalhes do utilizador selecionado (Front-end) (preparado para entrar atravez de ID).
+[x]	⁡⁣⁣⁢Deve ser possível entrar nos detalhes do utilizador selecionado (Front-end) (preparado para entrar atravez de ID)⁡.
 [x]	Deve ser possível editar um utilizador.
 [x]	Deve ser possível adicionar um utilizador.
 [x]	Deve ser possível remover qualquer utilizador.
+[x]	Deve ser possível o utilizador autentificar-se.
+[x]	Deve ser possível receber os dados profile apenas se o utilizador estiver autenticado.
 
 Tabela de Impostos - CRUD
 [x]	Deve ser possível visualizar Lista com todos os dados da tabela de impostos.
-[ ]	Deve ser possível entrar nos detalhes do imposto selecionado (Front-end) (preparado para entrar atravez de ID).
+[x]	⁡⁣⁣⁢Deve ser possível entrar nos detalhes do imposto selecionado (Front-end) (preparado para entrar atravez de ID).⁡
 [x]	Deve ser possível editar um detalhe de impostos.
 [x]	Deve ser possível adicionar um detalhe de impostos.
 [x]	Deve ser possível remover qualquer um impostos.
 
 Categoria de Produtos - CRUD
 [x]	Deve ser possível visualizar Lista com todas as categorias de produto.
-[ ]	Deve ser possível entrar nos detalhes do imposto selecionado (Front-end) (preparado para entrar atravez de ID).
+[x]	⁡⁣⁣⁢Deve ser possível entrar nos detalhes do imposto selecionado (Front-end) (preparado para entrar atravez de ID)⁡.
 [x]	Deve ser possível editar um detalhe de categorias de produto.
 [x]	Deve ser possível adicionar um detalhe de categorias de produto.
 [x]	Deve ser possível remover qualquer categorias de produto.
 
 Postos - CRUD
 [x]	Deve ser possível de Visualizar a lista da totalidade de postos.
-[ ]	Deve de ser possível entrar no posto selecionado (Front-end) (preparado para entrar atravez de ID).
+[x]	⁡⁣⁣⁢Deve de ser possível entrar no posto selecionado (Front-end) (preparado para entrar atravez de ID)⁡.
 [x]	Deve ser possível editar um posto já criado.
 [x]	Deve ser possível criar um posto.
 [x]	Deve ser possível remover um posto.
@@ -77,7 +79,8 @@ Stock control será responsável pelo controlo das quantidades de entradas e sa�
 [ ]	Deve de ser possível ter de um modo visual rápido de status do produto, através de alteração de cor. (Front-end)
 [ ]	No caso de entrada de produto deverá ser possível informar se aquele produto é recebido por pack ou é unidade, caso seja é unidade o valor será igual ao introduzido no input, caso seja recebido em pack o valor a transitar será multiplicado pela quantidade que cada pack traz.
 [ ]	Deve de ser possível através de um input enviar para a respetiva tabela de controlo de stock a quantidade de produto a que se refere a operação, no caso de entrada de produto o valor a adicionar corresponde ao introduzido, no caso de saída o valor a adicionar será multiplicado por -1 para que se torne um número negativo.
+
 Requisitos não funcionais
-[ ]	Os dados da aplicação precisam de estar persistidos numa base de dados PostgresSQL
+[x]	Os dados da aplicação precisam de estar persistidos numa base de dados PostgresSQL
 [ ]	Todas as listas precisam de estar paginadas com 30 registos
-[ ]	O Utilizador deve de ser identificado por um JWT (JSON Web Token)
+[x]	O Utilizador deve de ser identificado por um JWT (JSON Web Token)

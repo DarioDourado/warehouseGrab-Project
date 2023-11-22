@@ -2,6 +2,7 @@ import { Prisma, User } from "@prisma/client";
 import { UsersRepository } from "../user-repository";
 
 export class InMemoryUsersRepository implements UsersRepository {
+
   // Criar lugar em memória
   public items: User[] = [];
 
@@ -35,6 +36,15 @@ export class InMemoryUsersRepository implements UsersRepository {
     }
 
     return this.items[userWithSameEmail];
+  }
+
+  async findById(id: string) {
+      const uniqueUser = this.items.find((items) => items.id === id)
+
+      if (uniqueUser){
+
+      }
+      return null
   }
 
   private generateUniqueId(): string {
