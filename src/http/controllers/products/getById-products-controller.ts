@@ -1,5 +1,6 @@
 
-import { PrismaProductsRepository } from "@/repositories/prisma/prisma-product-register-repository";
+
+import { PrismaProductsRepository } from "@/repositories/prisma/prisma-product-repository";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from 'zod';
 
@@ -18,6 +19,6 @@ export async function getProductByIdController(request: FastifyRequest, reply: F
     } catch (error) {
 
         console.error("Error in getProductByIdController:", error);
-        return reply.status(500).send({ error: "Internal Server Error" });
+        return reply.status(409).send({ error: "Internal Server Error" });
     }
 }

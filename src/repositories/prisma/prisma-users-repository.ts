@@ -6,7 +6,16 @@ import { UsersRepository } from "../user-repository";
 // depois de termos um interface comum, podemos e devemos de "implementar" na nossa class.
 // NOTA: os mesmos métodos isados em interface tem de ser usados
 export class PrismaUsersRepository implements UsersRepository{
-   
+    async findById(id: string) {
+        const user = await prisma.user.findUnique({
+          where: {
+            id,
+          },
+        })
+    
+        return user
+      }
+      
     async findByEmail(email: string) {
         const user = await prisma.user.findUnique({
             where: {

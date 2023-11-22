@@ -33,7 +33,7 @@ export async function taxRegister(request: FastifyRequest, reply: FastifyReply) 
         if (error instanceof TaxNameError ) {
           return reply.status(409).send()
         }
-        return reply.status(500).send()
+        return reply.status(400).send()
      }
  
     return reply.status(201).send()

@@ -42,8 +42,6 @@ export async function userUpdaterController(request: FastifyRequest, reply: Fast
 
     } = userBodySchema.parse(request.body);
 
-    
-
     const idUd = id
     const newName = name
     const newEmail = email

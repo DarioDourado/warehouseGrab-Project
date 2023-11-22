@@ -8,6 +8,6 @@ export async function getAllProductsCategoriesController(request: FastifyRequest
         const productsCateories = await productsCateoriesRepository.getAllProductsCategories()
         reply.send(productsCateories);
     } catch (error) {
-        reply.status(500).send({ error: 'Internal Server Error' });
+        reply.status(409).send({ error: 'Internal Server Error' });
     }
 }

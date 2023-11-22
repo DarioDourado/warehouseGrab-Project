@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import { Prisma } from "@prisma/client";
-import { ProductsCategoryRepository } from "../productCategory-repository";
+import { ProductsCategoryRepository } from "../product-category-repository";
+
 
 
 
@@ -12,7 +13,7 @@ export class PrismaProductCategoryRepository implements ProductsCategoryReposito
                 productCategory
             }
         })
-        console.log(' PrismaTaxesRepository, a seguir ao taxValueNumber')
+
         return productCategoryName
     }
 

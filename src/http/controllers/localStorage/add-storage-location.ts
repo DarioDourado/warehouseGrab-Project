@@ -1,4 +1,5 @@
-import { makeGetLocalStorageUseCase } from "@/use-cases/factories/make-localStorage";
+
+import { makeGetLocalStorageUseCase } from "@/use-cases/factories/make-localStorage-use-case";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 

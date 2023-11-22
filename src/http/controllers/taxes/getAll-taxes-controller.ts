@@ -8,6 +8,6 @@ export async function getAllTaxesController(request: FastifyRequest, reply: Fast
         const taxes = await taxesRepository.getAllTaxes()
         reply.send(taxes);
     } catch (error) {
-        reply.status(500).send({ error: 'Internal Server Error' });
+        reply.status(409).send({ error: 'Internal Server Error' });
     }
 }

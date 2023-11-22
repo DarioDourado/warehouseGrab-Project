@@ -1,6 +1,8 @@
 import { prisma } from "@/lib/prisma";
 import { Prisma } from "@prisma/client";
-import { ProductsRepository } from "../productRegister-repository";
+import { ProductsRepository } from "../product-repository";
+
+
 
 export class PrismaProductsRepository implements ProductsRepository {
   async findByUPC(upc: string) {

@@ -1,4 +1,4 @@
-import { ProductsRepository } from "@/repositories/product-register-repository";
+import { ProductsRepository } from "@/repositories/product-repository";
 import { ProductCategoryAlreadyExistsError, SKUAlreadyExistsError, TaxValueAlreadyExistsError, UPCAlreadyExistsError } from "./errors/productError";
 
 interface ProductUseCaseRequest {
@@ -25,6 +25,7 @@ interface ProductUseCaseRequest {
 export class ProductUseCase {
 
     constructor(private productsRepository: ProductsRepository) {}
+
 
     async execute({
         upc,

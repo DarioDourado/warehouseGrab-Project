@@ -8,6 +8,6 @@ export async function getAllSuppliersController(request: FastifyRequest, reply: 
         const suppliers = await suppliersRepository.getAllSuppliers()
         reply.send(suppliers);
     } catch (error) {
-        reply.status(500).send({ error: 'Internal Server Error' });
+        reply.status(409).send({ error: 'Internal Server Error' });
     }
 }
