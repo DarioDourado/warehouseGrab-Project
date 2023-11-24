@@ -4,6 +4,12 @@ export class UPCAlreadyExistsError extends Error {
     }
 }
 
+export class UPCDoNotExist extends Error {
+    constructor() {
+        super('This UPC is not Registered or don´t belong to any product. Please check your product UPC');
+    }
+}
+
 export class SKUAlreadyExistsError extends Error {
     constructor() {
         super('SKU already exists, please check your product SKU');

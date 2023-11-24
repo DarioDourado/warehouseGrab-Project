@@ -54,7 +54,7 @@ export async function userRegister(request: FastifyRequest, reply: FastifyReply)
         if (error instanceof UserAlreadyExistsError) {
           return reply.status(409).send()
         }
-        return reply.status(500).send()
+        return reply.status(500).send('User added Successfully')
       }
 
     return reply.status(201).send()

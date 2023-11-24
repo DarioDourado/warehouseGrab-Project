@@ -5,33 +5,33 @@ import { ProductsRepository } from "../product-repository";
 
 
 export class PrismaProductsRepository implements ProductsRepository {
-  async findByUPC(upc: string) {
-    const product = await prisma.product.findFirst({
-      where: {
-        upc,
-      },
-    });
-
-    return product;
-  }
-
+  
   async getProductsById(id: string) {
     const product = await prisma.product.findFirst({
       where: {
         id,
       },
-    });
-
+    })
+    
     return product;
   }
-
-
+  
   async findBySKU(sku: string) {
     const product = await prisma.product.findFirst({
       where: {
         sku,
       },
-    });
+    })
+    
+    return product;
+  }
+  
+  async findByUPC(upc: string) {
+    const product = await prisma.product.findFirst({
+      where: {
+        upc
+      }
+    })
 
     return product;
   }
