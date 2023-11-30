@@ -33,19 +33,33 @@ export async function editStockController(request: FastifyRequest, reply: Fastif
     const newIsOut = isOut
     const newStockLocal = stockLocal
     
+    console.log(id);
+    console.log(newProductUPC);
+    console.log(newQuantity);
+    console.log(newIsOut);
+    console.log(newStockLocal);
 
-    const product = await prisma.stockControl.update({
-        where: {id: id},
-        data: {    
-            productUPC: newProductUPC,
-            quantity: newQuantity,
-            isOut: newIsOut,
-            stockLocal: {
-                connect: {
-                    name: stockLocal
+    try {
+        
+        const product = await prisma.stockControl.update({
+            where: {id: id},
+            data: {    
+                productUPC: newProductUPC,
+                quantity: newQuantity,
+                isOut: newIsOut,
+                stockLocal: {
+                    connect: {
+                        name: newStockLocal
+                    }
                 }
-            }
-            
-        },
-    })
+                
+            },
+        })
+
+        return reply.status(201).send("The StockControl was UPDATED Successfully");
+    } catch (error) {
+        
+        return reply.status(409).send("The StockControl was NOT UPDATED Successfully");
+    }
+
 }

@@ -29,7 +29,8 @@ export async function taxUpdaterController(request: FastifyRequest, reply: Fasti
     const newTaxValue = taxValue
     const newDescription = description
 
-
+try {
+    
     const producCategoryt = await prisma.tax.update({
         where: {id: id},
         data: {    
@@ -37,4 +38,8 @@ export async function taxUpdaterController(request: FastifyRequest, reply: Fasti
             description: newDescription
         },
     })
+    return reply.status(201).send("Tax info was UPDATED Successfully");
+} catch (error) {
+    return reply.status(409).send("Tax info was NOT UPDATED Successfully");
+}
 }

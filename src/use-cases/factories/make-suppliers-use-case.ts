@@ -1,5 +1,6 @@
 import { PrismaSuppliersRepository } from "@/repositories/prisma/prisma-supliers-repository"
-import { SupplierRegisterUseCase } from "../add-supplier-use-case"
+import { SupplierRegisterUseCase } from "../suppliers/add-supplier-use-case"
+
 
 
 export function makeGetSuppliersUseCase() {

@@ -55,7 +55,8 @@ export async function userUpdaterController(request: FastifyRequest, reply: Fast
     const newAddressLocal= addressLocal
     const newPhone = phone
 
-
+try {
+    
     const user = await prisma.user.update({
         where: {id: id},
         data: {    
@@ -73,4 +74,9 @@ export async function userUpdaterController(request: FastifyRequest, reply: Fast
 
         },
     })
+
+    return reply.status(201).send("User UPDATED Successfully");
+} catch (error) {
+    return reply.status(409).send("User not UPDATED Successfully");
+}
 }

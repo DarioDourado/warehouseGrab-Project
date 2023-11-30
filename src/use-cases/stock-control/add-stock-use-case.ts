@@ -1,7 +1,8 @@
 import { PrismaProductsRepository } from "@/repositories/prisma/prisma-product-repository";
 import { ProductsRepository } from "@/repositories/product-repository";
 import { StockControlRepository } from "@/repositories/stock-control-repository";
-import { UPCDoNotExist } from "./errors/productError";
+import { UPCDoNotExist } from "../errors/productError";
+
 
 interface AddStockUseCaseRequest {
     productUPC: string

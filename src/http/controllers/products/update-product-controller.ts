@@ -63,33 +63,40 @@ export async function productUpdaterController(request: FastifyRequest, reply: F
     const newAlert1 = alert1
     const newAlert2 = alert2
 
+ try {
+    
+     const product = await prisma.product.update({
+         where: {id: id},
+         data: {    
+             upc: newUpc,
+             sku: newSku,
+             name: newName,
+             description: newdescription,
+             price: newPrice,
+             tax: {
+                 connect: {
+                     taxValue: newTax
+                 }
+             },
+             photo: newphoto,
+             isPack: newisPack,
+             packUnQt: newPackUnQtd,
+             expirationDate: newExpirationDate,
+             productCategory: {
+                 connect: {
+                     productCategory: newProductCategory,
+                 },
+             },
+             stockRecQt: newStockRecQt,
+             alert1: newAlert1,
+             alert2: newAlert2,
+             
+         },
+     })
 
-    const product = await prisma.product.update({
-        where: {id: id},
-        data: {    
-            upc: newUpc,
-            sku: newSku,
-            name: newName,
-            description: newdescription,
-            price: newPrice,
-            tax: {
-                connect: {
-                    taxValue: newTax
-                }
-            },
-            photo: newphoto,
-            isPack: newisPack,
-            packUnQt: newPackUnQtd,
-            expirationDate: newExpirationDate,
-            productCategory: {
-                connect: {
-                    productCategory: newProductCategory,
-                },
-            },
-            stockRecQt: newStockRecQt,
-            alert1: newAlert1,
-            alert2: newAlert2,
-            
-        },
-    })
+     
+    return reply.status(201).send("Product UPDATED Successfully");
+ } catch (error) {
+    return reply.status(409).send({ error: "Product not UPDATED Successfully" });
+ }
 }

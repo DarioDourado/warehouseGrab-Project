@@ -26,14 +26,20 @@ export async function localStorageUpdaterController(request: FastifyRequest, rep
     const idUd = id
     const newName = name
     const newdescription = description
-    
-    const storage = await prisma.storageLocation.update({
-        where: {id: id},
-        data: {    
-     
-            name: newName,
-            description: newdescription,
-          
-        },
-    })
+    try {
+        
+        const storage = await prisma.storageLocation.update({
+            where: {id: id},
+            data: {    
+         
+                name: newName,
+                description: newdescription,
+              
+            },
+        })
+
+        return reply.status(201).send("The Storage Info was UPDATED Successfully");
+    } catch (error) {
+        return reply.status(201).send("The Storage Info was NOT UPDATED Successfully");
+    }
 }

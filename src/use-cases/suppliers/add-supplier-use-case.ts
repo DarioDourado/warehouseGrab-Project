@@ -1,5 +1,6 @@
 import { SuppliersRepository } from "@/repositories/supplier-repository";
-import { UserAlreadyExistsError } from "./errors/user-already-exist-error";
+import { UserAlreadyExistsError } from "../errors/user-already-exist-error";
+
 
 
 interface SupplierRegisterUseCaseRequest {

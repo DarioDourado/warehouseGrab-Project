@@ -1,5 +1,6 @@
 import { ProductsCategoryRepository } from "@/repositories/product-category-repository"
-import { ProductCategoryAlreadyExistsError } from "./errors/productError"
+import { ProductCategoryAlreadyExistsError } from "../errors/productError"
+
 
 
 

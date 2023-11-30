@@ -53,22 +53,28 @@ export async function supplierUpdaterController(request: FastifyRequest, reply: 
     const newEmail = email
     const newPaymentConTerm = paymentCondTerm
 
+    try {
+        
+        const newSupplier = await prisma.supplier.update({
+            where: {id: id},
+            data: {    
+                name: newName,
+                taxNumber: newTaxNumber,
+                street: newStreet,
+                addressLocalCode: newAddressLocalCode,
+                addressLocalZone: newAddressLocalZone,
+                country: newCountry,
+                phone1: newphone1,
+                phone2: newphone2,
+                email: newEmail,
+                paymentCondTerm: newPaymentConTerm,
+                
+            },
+        })
 
+        return reply.status(201).send("Supplier Info was UPDATED Successfully");
+    } catch (error) {
+        return reply.status(409).send("Supplier Info was NOT UPDATED Successfully");
+    }
 
-    const newSupplier = await prisma.supplier.update({
-        where: {id: id},
-        data: {    
-            name: newName,
-            taxNumber: newTaxNumber,
-            street: newStreet,
-            addressLocalCode: newAddressLocalCode,
-            addressLocalZone: newAddressLocalZone,
-            country: newCountry,
-            phone1: newphone1,
-            phone2: newphone2,
-            email: newEmail,
-            paymentCondTerm: newPaymentConTerm,
-            
-        },
-    })
 }

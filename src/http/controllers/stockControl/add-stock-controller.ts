@@ -42,7 +42,7 @@ export async function addStock(request: FastifyRequest, reply: FastifyReply) {
                     connect: {
                         name: stockLocal
                     }
-                }
+                },
             }
         })
       

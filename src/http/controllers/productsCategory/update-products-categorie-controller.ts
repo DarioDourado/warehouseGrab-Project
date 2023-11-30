@@ -26,12 +26,18 @@ export async function productCategoryUpdaterController(request: FastifyRequest, 
     const idUd = id
     const newProductCategory = productCategory
 
+    try {
+        
+        const producCategoryt = await prisma.productCategory.update({
+            where: {id: id},
+            data: {    
+                productCategory: newProductCategory
+       
+            },
+        })
 
-    const producCategoryt = await prisma.productCategory.update({
-        where: {id: id},
-        data: {    
-            productCategory: newProductCategory
-   
-        },
-    })
+        return reply.status(201).send("Product Category UPDATED Successfully");
+    } catch (error) {
+        return reply.status(409).send("Product Category not UPDATED Successfully" );
+    }
 }

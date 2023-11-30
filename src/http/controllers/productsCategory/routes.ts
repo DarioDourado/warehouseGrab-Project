@@ -8,7 +8,7 @@ import { productCategoryUpdaterController } from "./update-products-categorie-co
 export async function productsCategiesRoutes(app: FastifyInstance) {
 
 
-    app.post('/add-product', productCategoryRegister)
+    app.post('/add-productcategory', productCategoryRegister)
 
     app.get('/get-all-productcategories', getAllProductsCategoriesController)
 

@@ -1,6 +1,6 @@
 import { verifyJwt } from "@/http/middlewares/verify-jwt";
 import { FastifyInstance } from "fastify";
-import { authenticate } from "../authenticate";
+import { authenticate } from "../auth/authenticate";
 import { userRegister } from "./add-user-controller";
 import { userDeleteController } from "./delete-users-controller";
 import { getAllUsersController } from "./getAll-users-controllers";

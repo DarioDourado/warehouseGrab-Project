@@ -1,5 +1,7 @@
 import { PrismaTaxesRepository } from "@/repositories/prisma/prisma-tax-repository"
-import { TaxRegisterUseCase } from "../add-tax-use-case"
+import { TaxRegisterUseCase } from "../tax/add-tax-use-case"
+
+
 
 
 export function makeGetTaxesUseCase() {

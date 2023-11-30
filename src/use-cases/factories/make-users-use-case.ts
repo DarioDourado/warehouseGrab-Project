@@ -1,5 +1,6 @@
 import { PrismaUsersRepository } from '@/repositories/prisma/prisma-users-repository'
-import { RegisterUseCase } from '../add-user-use-case'
+import { RegisterUseCase } from '../users/add-user-use-case'
+
 
 
 

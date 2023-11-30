@@ -20,6 +20,8 @@ Projecto Backend
 [x]	Não deve ser possível criar um producto na tabela de produtos sem UPC (Universal Product Code).
 [x]	Não deve ser possível criar um producto na tabela de produtos sem SKU (Internal Code).
 [x]	Deve ser possível escolher se um produto dá entrada em formato pack ou individual.
+[x]	Deve ser possível pesquisar um produto através do seu UPC e obter todos os dados referentes ao mesmo.
+[x]	Deve ser possível pesquisar um produto através do seu ID e obter todos os dados referentes ao mesmo.
 [ ]	No caso de entrada de produto deverá ser possível informar se aquele produto é recebido por pack ou é unidade, caso seja é unidade o valor será igual ao introduzido no input, caso seja recebido em pack o valor a transitar será multiplicado pela quantidade que cada pack traz.
 	Deve ser possível visualizar os seguintes alertas de produtos:
 [ ]	Verde – Tudo OK com o produto, definida no campo próprio. Esta quantidade é definida em campo próprio na criação de produtos (Front-end) (Condição dada ao front-end, info em QSR, Alerta 1 e alerta 2).

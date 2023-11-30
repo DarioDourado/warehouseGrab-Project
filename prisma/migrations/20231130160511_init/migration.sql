@@ -1,15 +1,4 @@
 -- CreateTable
-CREATE TABLE "UserTeste" (
-    "id" SERIAL NOT NULL,
-    "name" TEXT NOT NULL,
-    "email" TEXT NOT NULL,
-    "password_Hash" TEXT NOT NULL,
-    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-
-    CONSTRAINT "UserTeste_pkey" PRIMARY KEY ("id")
-);
-
--- CreateTable
 CREATE TABLE "companyInfo" (
     "name" TEXT NOT NULL,
     "address" TEXT NOT NULL,
@@ -84,7 +73,7 @@ CREATE TABLE "product_categories" (
 
 -- CreateTable
 CREATE TABLE "suppliers" (
-    "id" SERIAL NOT NULL,
+    "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "taxNumber" TEXT NOT NULL,
     "street" TEXT NOT NULL,
@@ -104,7 +93,7 @@ CREATE TABLE "suppliers" (
 
 -- CreateTable
 CREATE TABLE "storageLocation" (
-    "id" SERIAL NOT NULL,
+    "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "description" TEXT NOT NULL,
 
@@ -113,28 +102,20 @@ CREATE TABLE "storageLocation" (
 
 -- CreateTable
 CREATE TABLE "stockControl" (
-    "id" SERIAL NOT NULL,
+    "id" TEXT NOT NULL,
+    "productUPC" TEXT NOT NULL,
     "quantity" INTEGER NOT NULL,
-    "storageLocationIn_id" INTEGER,
-    "storageLocationOut_id" INTEGER,
+    "isOut" BOOLEAN NOT NULL DEFAULT true,
+    "storageLocationId" TEXT NOT NULL,
 
     CONSTRAINT "stockControl_pkey" PRIMARY KEY ("id")
 );
-
--- CreateIndex
-CREATE UNIQUE INDEX "UserTeste_email_key" ON "UserTeste"("email");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "companyInfo_email_key" ON "companyInfo"("email");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "users_email_key" ON "users"("email");
-
--- CreateIndex
-CREATE UNIQUE INDEX "products_upc_key" ON "products"("upc");
-
--- CreateIndex
-CREATE UNIQUE INDEX "products_sku_key" ON "products"("sku");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "taxes_taxValue_key" ON "taxes"("taxValue");
@@ -148,12 +129,6 @@ CREATE UNIQUE INDEX "suppliers_email_key" ON "suppliers"("email");
 -- CreateIndex
 CREATE UNIQUE INDEX "storageLocation_name_key" ON "storageLocation"("name");
 
--- CreateIndex
-CREATE UNIQUE INDEX "stockControl_storageLocationIn_id_key" ON "stockControl"("storageLocationIn_id");
-
--- CreateIndex
-CREATE UNIQUE INDEX "stockControl_storageLocationOut_id_key" ON "stockControl"("storageLocationOut_id");
-
 -- AddForeignKey
 ALTER TABLE "products" ADD CONSTRAINT "products_tax_id_fkey" FOREIGN KEY ("tax_id") REFERENCES "taxes"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
@@ -161,7 +136,4 @@ ALTER TABLE "products" ADD CONSTRAINT "products_tax_id_fkey" FOREIGN KEY ("tax_i
 ALTER TABLE "products" ADD CONSTRAINT "products_category_id_fkey" FOREIGN KEY ("category_id") REFERENCES "product_categories"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "stockControl" ADD CONSTRAINT "stockControl_storageLocationIn_id_fkey" FOREIGN KEY ("storageLocationIn_id") REFERENCES "storageLocation"("id") ON DELETE SET NULL ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "stockControl" ADD CONSTRAINT "stockControl_storageLocationOut_id_fkey" FOREIGN KEY ("storageLocationOut_id") REFERENCES "storageLocation"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "stockControl" ADD CONSTRAINT "stockControl_storageLocationId_fkey" FOREIGN KEY ("storageLocationId") REFERENCES "storageLocation"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
