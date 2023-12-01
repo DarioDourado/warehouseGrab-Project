@@ -38,10 +38,14 @@ export class StockControlUseCase {
 
         await this.stockControlRepository.createStock({
       
-            productUPC,
+            product: {
+                connect: {
+                    upc: productUPC
+                }
+            },
             quantity: newQuantity,
             isOut,
-            stockLocal: {
+            storageLocation: {
                 connect: {
                     name: stockLocal
                 }

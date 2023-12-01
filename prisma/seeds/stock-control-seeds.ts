@@ -1,16 +1,12 @@
 // Arquivo: seed.ts
 
 import { PrismaClient } from "@prisma/client";
-import { seedProducts } from "./products-seeds";
 
 const prisma = new PrismaClient();
 
 export async function seedStockControl() {
   try {
 
-      await seedProducts();
-
-      await seedStockControl()
     // Seed StockControl
     const stockControlsData = [
       {
@@ -50,7 +46,7 @@ export async function seedStockControl() {
         storageLocation: "Central",
       },
       {
-        productUPC: "006",
+        productUPC: "005",
         quantity: 54,
         isOut: false,
         storageLocation: "Central",
@@ -78,25 +74,93 @@ export async function seedStockControl() {
         quantity: 4,
         isOut: true,
         storageLocation: "Posto 2",
-      }
+      },
+      {
+        productUPC: "001",
+        quantity: 100,
+        isOut: false,
+        storageLocation: "Central",
+      },
+      {
+        productUPC: "002",
+        quantity: 50,
+        isOut: false,
+        storageLocation: "Posto 2",
+      },
+      {
+        productUPC: "002",
+        quantity: 25,
+        isOut: true,
+        storageLocation: "Central",
+      },
+      {
+        productUPC: "003",
+        quantity: 25,
+        isOut: false,
+        storageLocation: "Posto 3",
+      },
+      {
+        productUPC: "004",
+        quantity: 15,
+        isOut: false,
+        storageLocation: "Central",
+      },
+      {
+        productUPC: "005",
+        quantity: 23,
+        isOut: false,
+        storageLocation: "Central",
+      },
+      {
+        productUPC: "005",
+        quantity: 54,
+        isOut: false,
+        storageLocation: "Central",
+      },
+      {
+        productUPC: "005",
+        quantity: 14,
+        isOut: true,
+        storageLocation: "Central",
+      },
+      {
+        productUPC: "001",
+        quantity: 21,
+        isOut: false,
+        storageLocation: "Posto 1",
+      },
+      {
+        productUPC: "005",
+        quantity: 1,
+        isOut: false,
+        storageLocation: "Posto 2",
+      },
+      {
+        productUPC: "002",
+        quantity: 4,
+        isOut: true,
+        storageLocation: "Posto 3",
+      },
     ]
-
+    
     const stockControlSeeds = await prisma.stockControl.createMany({
       data: await Promise.all(
         stockControlsData.map(async (stockControl) => {
-          const { storageLocation, ...scontrol } = stockControl;
+          const { storageLocation, ...sControl } = stockControl;
           const storageLocationRecord = await prisma.storageLocation.findFirst({
             where: { name: storageLocation },
           });
+
+
 
           if (!storageLocationRecord) {
             throw new Error(`Storage location not found: ${storageLocation}`);
           }
           return {
-            ...scontrol,
+            ...sControl,
             storageLocationId: storageLocationRecord.id,
           };
-        })
+  })
       ),
     });
 

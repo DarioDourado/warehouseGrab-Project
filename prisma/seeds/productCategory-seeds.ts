@@ -8,6 +8,7 @@ const productCategorieData = [
   "Desporto",
   "Calçado",
   "Acessórios",
+  "Calças",
 ]
 
 /**

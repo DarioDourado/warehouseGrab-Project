@@ -34,16 +34,22 @@ export async function addStock(request: FastifyRequest, reply: FastifyReply) {
     try {
         
         const stockInput = await prisma.stockControl.create({
+
             data: {
-                productUPC,
+                product: {
+                    connect: {
+                        upc: productUPC
+                    }
+                },
                 quantity: newQuantity,
                 isOut,
-                stockLocal: {
+                storageLocation: {
                     connect: {
                         name: stockLocal
                     }
-                },
+                }
             }
+            
         })
       
         return reply.status(201).send("successfully");
