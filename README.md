@@ -87,7 +87,6 @@ Stock control será responsável pelo controlo das quantidades de entradas e sa�
 [x]	Deve de ser possível apagar qualquer movimento (entrada / saída) um produto em stock.
 [x]	Deve de ser possível editar qualquer movimento (entrada / saída) um produto em stock.
 [x]	Deve de ser possível obter uma lista de movimentos de stock.
-[ ]	Deve de ser possível obter um resumo de Movimento com:
 
     Deve de ser possivel obter um resumo de movimento com:
 ​[x] UPC
