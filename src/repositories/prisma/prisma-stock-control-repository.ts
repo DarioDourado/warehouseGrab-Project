@@ -175,6 +175,7 @@ export class PrismaStockControlRepository implements ProductsRepository {
       include: {
         product: {
           select: {
+            upc: true,
             name: true,
             description: true,
           },
