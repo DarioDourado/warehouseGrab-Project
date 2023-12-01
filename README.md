@@ -79,7 +79,7 @@ Deve ser possível de Visualizar os seguintes resumos.
     ​‌‍‌Stock Control​
 Stock control será responsável pelo controlo das quantidades de entradas e saídas de stock dos diversos postos.
 [x] Deve de ser possível introduzir o código de barras UPC e o sistema retornar a informação referente ao produto.
-[ ]	⁡⁣⁣⁢Deve de ser possível ter de um modo visual rápido de status do produto, através de alteração de cor. (Front-end)⁡
+[ ]	Deve de ser possível ter de um modo visual rápido de status do produto, através de alteração de cor. (Front-end)
 [x]	Deve de ser possível dar entrada de um produto em stock.
 [x]	Deve de ser possível dar saida de um produto de stock.
 [x]	Deve de ser possível dar entrada de um produto num determinado local Storage.
@@ -87,7 +87,14 @@ Stock control será responsável pelo controlo das quantidades de entradas e sa�
 [x]	Deve de ser possível apagar qualquer movimento (entrada / saída) um produto em stock.
 [x]	Deve de ser possível editar qualquer movimento (entrada / saída) um produto em stock.
 [x]	Deve de ser possível obter uma lista de movimentos de stock.
-[ ]	Deve de ser possível obter um resumo de entradas e saidas de qualquer produto.
+[ ]	Deve de ser possível obter um resumo de Movimento com:
+
+    Deve de ser possivel obter um resumo de movimento com:
+​[x] UPC
+​[x] Name
+​[x] Description
+​[x] Local Storage
+​[x] Quantidade Total do Produto.
 
 
     Requisitos não funcionais
