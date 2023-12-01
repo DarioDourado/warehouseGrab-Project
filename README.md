@@ -22,11 +22,11 @@ Projecto Backend
 [x]	Deve ser possível escolher se um produto dá entrada em formato pack ou individual.
 [x]	Deve ser possível pesquisar um produto através do seu UPC e obter todos os dados referentes ao mesmo.
 [x]	Deve ser possível pesquisar um produto através do seu ID e obter todos os dados referentes ao mesmo.
-[ ]	No caso de entrada de produto deverá ser possível informar se aquele produto é recebido por pack ou é unidade, caso seja é unidade o valor será igual ao introduzido no input, caso seja recebido em pack o valor a transitar será multiplicado pela quantidade que cada pack traz.
+
 	Deve ser possível visualizar os seguintes alertas de produtos:
-[ ]	Verde – Tudo OK com o produto, definida no campo próprio. Esta quantidade é definida em campo próprio na criação de produtos (Front-end) (Condição dada ao front-end, info em QSR, Alerta 1 e alerta 2).
-[ ]	Amarelo / Alerta 1 – Atenção, produto deverá de ser encomendado. Este alerta é definido em campo próprio na criação de produtos, ou caso não definida pelo utilizador, quando os valores de stock se encontram 30% abaixo da QMS. (Condição dada ao front-end, info em QSR, Alerta 1 e alerta 2).
-[ ]	Vermelho / Alerta 2 – Rotura de Stock, brevemente este produto ficará esgotado. Este alerta é definido em campo próprio na criação de produtos, ou caso não definida pelo utilizador, quando os valores de stock se encontram 60% abaixo da QMS. (Condição dada ao front-end, info em QSR, Alerta 1 e alerta 2).
+[ ]	⁡⁢⁢⁢Verde⁡ – ⁡⁣⁣⁢Tudo OK com o produto, definida no campo próprio. Esta quantidade é definida em campo próprio na criação de produtos (Front-end) (Condição dada ao front-end, info em QSR, Alerta 1 e alerta 2). (Front-end)⁡
+[ ]	⁡⁣⁣⁢Amarelo⁡ / Alerta 1 – ⁡⁣⁣⁢Atenção, produto deverá de ser encomendado. Este alerta é definido em campo próprio na criação de produtos, ou caso não definida pelo utilizador, quando os valores de stock se encontram 30% abaixo da QMS. (Condição dada ao front-end, info em QSR, Alerta 1 e alerta 2). (Front-end)⁡
+[ ]	⁡⁢⁣⁢Vermelho⁡ / Alerta 2 – ⁡⁣⁣⁢Rotura de Stock, brevemente este produto ficará esgotado. Este alerta é definido em campo próprio na criação de produtos, ou caso não definida pelo utilizador, quando os valores de stock se encontram 60% abaixo da QMS. (Condição dada ao front-end, info em QSR, Alerta 1 e alerta 2). (Front-end)⁡
 
     ​‌‍‌Fornecedores - CRUD​
 [x]	Deve ser possível visualizar Lista com Todos os Fornecedores.
@@ -78,10 +78,17 @@ Deve ser possível de Visualizar os seguintes resumos.
 
     ​‌‍‌Stock Control​
 Stock control será responsável pelo controlo das quantidades de entradas e saídas de stock dos diversos postos.
-[ ] Deve de ser possível introduzir o código de barras UPC e o sistema retornar a informação referente ao produto
-[ ]	Deve de ser possível ter de um modo visual rápido de status do produto, através de alteração de cor. (Front-end)
+[x] Deve de ser possível introduzir o código de barras UPC e o sistema retornar a informação referente ao produto.
+[ ]	⁡⁣⁣⁢Deve de ser possível ter de um modo visual rápido de status do produto, através de alteração de cor. (Front-end)⁡
+[x]	Deve de ser possível dar entrada de um produto em stock.
+[x]	Deve de ser possível dar saida de um produto de stock.
+[x]	Deve de ser possível dar entrada de um produto num determinado local Storage.
+[x]	Deve de ser possível dar saida de um produto num determinado local Storage.
+[x]	Deve de ser possível apagar qualquer movimento (entrada / saída) um produto em stock.
+[x]	Deve de ser possível editar qualquer movimento (entrada / saída) um produto em stock.
+[x]	Deve de ser possível obter uma lista de movimentos de stock.
+[ ]	Deve de ser possível obter um resumo de entradas e saidas de qualquer produto.
 
-[ ]	Deve de ser possível através de um input enviar para a respetiva tabela de controlo de stock a quantidade de produto a que se refere a operação, no caso de entrada de produto o valor a adicionar corresponde ao introduzido, no caso de saída o valor a adicionar será multiplicado por -1 para que se torne um número negativo.
 
     Requisitos não funcionais
 [x]	Os dados da aplicação precisam de estar persistidos numa base de dados PostgresSQL
