@@ -158,18 +158,7 @@ export class PrismaStockControlRepository implements ProductsRepository {
     return result;
   }
 
-  async getAllStockGroupBy()  {
-
-        interface GroupedStock {
-            product: {
-                name: string;
-                description: string;
-            };
-            storageLocations: string[];
-            totalQuantity: number;
-        }
-
-
+  async getStockResume()  {
 
     const allStockGB = await prisma.stockControl.findMany({
       include: {
@@ -178,6 +167,9 @@ export class PrismaStockControlRepository implements ProductsRepository {
             upc: true,
             name: true,
             description: true,
+            stockRecQt: true,
+            alert1: true,
+            alert2: true,
           },
         },
         storageLocation: {
@@ -188,33 +180,7 @@ export class PrismaStockControlRepository implements ProductsRepository {
       },
     });
 
-    const groupedStock: Record<string, GroupedStock> = {};
-    allStockGB.forEach((stock) => {
-      interface GroupedStock {
-        product: {
-          name: string;
-          description: string;
-        };
-        storageLocations: string[];
-        totalQuantity: number;
-      }
-
-      const upc  = stock.product.name;
-      if (!groupedStock[upc]) {
-        groupedStock[upc] = {
-          product: stock.product,
-          storageLocations: [stock.storageLocation.name],
-          totalQuantity: stock.quantity,
-        };
-      } else {
-        groupedStock[upc].totalQuantity += stock.quantity;
-      }
-    });
-
-    // Converter o objeto em um array
-    const resultadoFinal = Object.values(groupedStock);
-
-    return resultadoFinal;
+    return allStockGB
   }
 
   async getAllStockGroupBy2() {
