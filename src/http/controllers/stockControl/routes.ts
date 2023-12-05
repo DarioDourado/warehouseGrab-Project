@@ -1,7 +1,6 @@
 import { FastifyInstance } from "fastify";
 import { addStock } from "./add-stock-controller";
-
-import { getQtGroupByStockController } from "./count-resume-stock-controllers copy";
+import { getQtGroupByStockController } from "./count-resume-stock-controllers";
 import { editStockController } from "./edit-stock-controller";
 import { getAllStockController } from "./get-all-stock-controller";
 import { getQtResumeStockController } from "./group-By-resume-stock-controllers";

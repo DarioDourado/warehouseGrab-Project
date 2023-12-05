@@ -1,6 +1,6 @@
 import { InMemoryUsersRepository } from '@/repositories/in-memory/in-memory-user-repository';
 import { describe, expect, it } from 'vitest';
-import { AuthenticateUseCase } from '../authenticate';
+import { AuthenticateUseCase } from '../auth/authenticate-use-case';
 import { InvalidCredentialsError } from '../errors/invalid-credentials-error';
 
 
