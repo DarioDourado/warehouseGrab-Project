@@ -23,7 +23,7 @@ Projecto Backend
 [x]	Deve ser possível pesquisar um produto através do seu UPC e obter todos os dados referentes ao mesmo.
 [x]	Deve ser possível pesquisar um produto através do seu ID e obter todos os dados referentes ao mesmo.
 
-	Deve ser possível visualizar os seguintes alertas de produtos:
+	Deve ser possível visualizar os seguintes alertas de produtos (Front-End)
 [ ]	⁡⁢⁢⁢Verde⁡ – ⁡⁣⁣⁢Tudo OK com o produto, definida no campo próprio. Esta quantidade é definida em campo próprio na criação de produtos (Front-end) (Condição dada ao front-end, info em QSR, Alerta 1 e alerta 2). (Front-end)⁡
 [ ]	⁡⁣⁣⁢Amarelo⁡ / Alerta 1 – ⁡⁣⁣⁢Atenção, produto deverá de ser encomendado. Este alerta é definido em campo próprio na criação de produtos, ou caso não definida pelo utilizador, quando os valores de stock se encontram 30% abaixo da QMS. (Condição dada ao front-end, info em QSR, Alerta 1 e alerta 2). (Front-end)⁡
 [ ]	⁡⁢⁣⁢Vermelho⁡ / Alerta 2 – ⁡⁣⁣⁢Rotura de Stock, brevemente este produto ficará esgotado. Este alerta é definido em campo próprio na criação de produtos, ou caso não definida pelo utilizador, quando os valores de stock se encontram 60% abaixo da QMS. (Condição dada ao front-end, info em QSR, Alerta 1 e alerta 2). (Front-end)⁡
@@ -69,7 +69,7 @@ Projecto Backend
 [x]	Deve ser possível criar um posto.
 [x]	Deve ser possível remover um posto.
 
-    ​‌‍‌Dashboard​
+    ​‌‍‌Dashboard (Front-End)​
 Deve ser possível de Visualizar os seguintes resumos.
 [ ]	Alertas de Stock Tipo 1.
 [ ]	Alertas de Stock Tipo 2.
@@ -79,7 +79,7 @@ Deve ser possível de Visualizar os seguintes resumos.
     ​‌‍‌Stock Control​
 Stock control será responsável pelo controlo das quantidades de entradas e saídas de stock dos diversos postos.
 [x] Deve de ser possível introduzir o código de barras UPC e o sistema retornar a informação referente ao produto.
-[ ]	Deve de ser possível ter de um modo visual rápido de status do produto, através de alteração de cor. (Front-end)
+[ ]	⁡⁣⁣⁢Deve de ser possível ter de um modo visual rápido de status do produto, através de alteração de cor. (Front-end)⁡
 [x]	Deve de ser possível dar entrada de um produto em stock.
 [x]	Deve de ser possível dar saida de um produto de stock.
 [x]	Deve de ser possível dar entrada de um produto num determinado local Storage.
@@ -94,7 +94,10 @@ Stock control será responsável pelo controlo das quantidades de entradas e sa�
 ​[x] Description
 ​[x] Local Storage
 ​[x] Quantidade Total do Produto.
-
+​[x] Status do Produto.
+    ​[x] Se quantidade Total for menor ou igual á quantidade Alert2, Status: Alerta 2.
+    ​[x] Se quantidade Total for maior que Alert2 e menor ou igual á quantidade Alert1, Status: Alerta 1.
+    ​[x] Se quantidade Total for superior á quantidade recomendada de stock, Status: OK
 
     Requisitos não funcionais
 [x]	Os dados da aplicação precisam de estar persistidos numa base de dados PostgresSQL
