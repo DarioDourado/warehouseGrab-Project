@@ -17,6 +17,16 @@ export class PrismaProductCategoryRepository implements ProductsCategoryReposito
         return productCategoryName
     }
 
+    async findProductCategoryById(id: string) {
+        const productCategoryId = await prisma.productCategory.findFirst({
+            where:{
+                id
+            }
+        })
+
+        return productCategoryId
+    }
+
     async createProductCategory (data: Prisma.ProductCategoryCreateInput) {
         const productCategory = await prisma.productCategory.create( {data} )
 

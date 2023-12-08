@@ -11,7 +11,7 @@ export async function productsRoutes(app: FastifyInstance) {
 
     app.post('/productregister', productRegister)
 
-    app.get('/products', getAllProductsController )
+    app.get('/get-all-products', getAllProductsController )
     app.get('/get-product-by-upc/:upc', getProductByUPCController )
     app.get('/get-product-by-id/:id', getProductByIdController )
 

@@ -193,4 +193,12 @@ export class PrismaStockControlRepository implements ProductsRepository {
 
     return allStockGB;
   }
+
+  async findByIdStockRegister(id: string) {
+    const stockRegister = await prisma.product.findFirst({
+      where: {
+        id,
+      },
+    });
+  }
 }

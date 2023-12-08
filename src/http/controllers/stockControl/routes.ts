@@ -3,25 +3,22 @@ import { addStock } from "./add-stock-controller";
 import { getQtGroupByStockController } from "./count-resume-stock-controllers";
 import { editStockController } from "./edit-stock-controller";
 import { getAllStockController } from "./get-all-stock-controller";
+import { getStockRegisterByIdController } from "./get-by-id-inventary-register-controller";
 import { getQtResumeStockController } from "./group-By-resume-stock-controllers";
 import { removeStockController } from "./remove-stock-conttroller";
 
 export async function stockControlRoutes(app: FastifyInstance) {
 
-    app.post('/addStock', addStock)
+    app.post('/inventaryregister', addStock)
 
-    app.delete('/removestock/:id', removeStockController)
+    app.delete('/remove-inventoryregist/:id', removeStockController)
 
-    app.put('/edit-stock/:id', editStockController)
+    app.put('/edit-inventoryregister/:id', editStockController)
 
-    app.get('/getall-stock', getAllStockController)
-    app.get('/get-stock', getQtResumeStockController)
-    app.get('/get-stock-goup-by', getQtGroupByStockController)
-
-
-
-        
-        
+    app.get('/getall-inventory', getAllStockController)
+    app.get('/get-inventory', getQtResumeStockController)
+    app.get('/get-inventory-resume', getQtGroupByStockController)
+    app.get('/get-by-id-inventoryregister', getStockRegisterByIdController)
 
 }
 

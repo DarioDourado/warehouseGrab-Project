@@ -6,7 +6,15 @@ import { SuppliersRepository } from "../supplier-repository";
 // depois de termos um interface comum, podemos e devemos de "implementar" na nossa class.
 // NOTA: os mesmos métodos isados em interface tem de ser usados
 export class PrismaSuppliersRepository implements SuppliersRepository{
+    async findSupplierById(id: string) {
+        const supplier = await prisma.supplier.findUnique({
+            where: {
+                id,
+            },
+        })
 
+        return supplier
+    }
     async findSupplierByEmail(email: string) {
         const supplier = await prisma.supplier.findUnique({
             where: {

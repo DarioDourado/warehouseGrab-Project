@@ -101,5 +101,4 @@ Stock control será responsável pelo controlo das quantidades de entradas e sa�
 
     Requisitos não funcionais
 [x]	Os dados da aplicação precisam de estar persistidos numa base de dados PostgresSQL
-[ ]	Todas as listas precisam de estar paginadas com 30 registos
 [x]	O Utilizador deve de ser identificado por um JWT (JSON Web Token)

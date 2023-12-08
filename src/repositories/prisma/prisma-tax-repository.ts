@@ -16,6 +16,16 @@ export class PrismaTaxesRepository implements TaxesRepository{
         return taxValueNumber
     }
 
+    async findTaxById(id: string) {
+        const taxValueNumber = await prisma.tax.findFirst({
+            where:{
+                id
+            }
+        })
+        console.log(' PrismaTaxesRepository, a seguir ao taxValueNumber')
+        return taxValueNumber
+    }
+
     async createTax (data: Prisma.TaxCreateInput) {
         const tax = await prisma.tax.create( {data} )
         return tax

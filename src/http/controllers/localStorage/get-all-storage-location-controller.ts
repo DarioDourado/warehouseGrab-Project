@@ -1,4 +1,4 @@
-import { PrismaStorageLocationRepository } from "@/repositories/storage-location-repository";
+import { PrismaStorageLocationRepository } from "@/repositories/prisma/prisma-storage-location-repository";
 import { FastifyReply, FastifyRequest } from "fastify";
 
 export async function getAllLocalStorageController(request: FastifyRequest, reply: FastifyReply) {
