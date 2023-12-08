@@ -1,4 +1,4 @@
-import { PrismaStorageLocationRepository } from "@/repositories/storage-location-repository"
+import { PrismaStorageLocationRepository } from "@/repositories/prisma/prisma-storage-location-repository"
 import { StorageLocationRegisterUseCase } from "../local-storage/local-storage-use-case"
 
 

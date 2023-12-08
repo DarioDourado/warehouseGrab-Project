@@ -1,4 +1,4 @@
-import { StorageLocationRepository } from "@/repositories/prisma/prisma-storage-location-repository"
+import { StorageLocationRepository } from "@/repositories/storage-location-repository"
 import { LocalStorageNameError } from "../errors/storage-errors"
 
 
